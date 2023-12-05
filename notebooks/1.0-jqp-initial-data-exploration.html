@@ -7496,7 +7496,7 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:.0f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:.3f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span>
 </pre></div>
 </div>
 </div>
@@ -7688,25 +7688,25 @@ a.anchor-link {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Datos de tipo int64: 
-       year  refugees  asylum_seekers  returned_refugees    idps  \
-count 64809     64809           64809              64809   64809   
-mean   2016      3440             564                 73    7089   
-std       4     55256            7456               2460  163175   
-min    2010         0               0                  0       0   
-25%    2013         5               0                  0       0   
-50%    2017        12               8                  0       0   
-75%    2020        88              57                  0       0   
-max    2022   3737369          940668             381275 8252788   
+           year    refugees  asylum_seekers  returned_refugees        idps  \
+count 64809.000   64809.000       64809.000          64809.000   64809.000   
+mean   2016.393    3440.013         564.166             73.481    7088.696   
+std       3.723   55255.972        7455.731           2460.283  163174.631   
+min    2010.000       0.000           0.000              0.000       0.000   
+25%    2013.000       5.000           0.000              0.000       0.000   
+50%    2017.000      12.000           8.000              0.000       0.000   
+75%    2020.000      88.000          57.000              0.000       0.000   
+max    2022.000 3737369.000      940668.000         381275.000 8252788.000   
 
-       returned_idps  stateless     ooc  
-count          64809      64809   64809  
-mean             706        757     437  
-std            23654      19980   20183  
-min                0          0       0  
-25%                0          0       0  
-50%                0          0       0  
-75%                0          0       0  
-max          2134349     955399 3206577  
+       returned_idps  stateless         ooc  
+count      64809.000  64809.000   64809.000  
+mean         706.157    756.625     437.496  
+std        23654.237  19980.221   20182.676  
+min            0.000      0.000       0.000  
+25%            0.000      0.000       0.000  
+50%            0.000      0.000       0.000  
+75%            0.000      0.000       0.000  
+max      2134349.000 955399.000 3206577.000  
 -----------------------------------------------------------------------------------------
 Datos de tipo object: 
                 coo_name    coo coo_iso                  coa_name    coa  \
@@ -7722,15 +7722,15 @@ top        USA
 freq      2305  
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
-          oip      hst
-count     100     5964
-mean   196611     6265
-std    419587   210090
-min         5        0
-25%      8218        0
-50%     23165        0
-75%    164760        0
-max   2453862 15209720
+              oip          hst
+count     100.000     5964.000
+mean   196611.160     6264.660
+std    419586.958   210090.459
+min         5.000        0.000
+25%      8218.250        0.000
+50%     23165.000        0.000
+75%    164760.000        0.000
+max   2453862.000 15209720.000
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 year                     0
@@ -7792,36 +7792,36 @@ dtype: int64
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>1_Displacement_data
   ISO3         Name  Year  Conflict Stock Displacement  \
-0  AB9   Abyei Area  2022                        56000   
-1  AFG  Afghanistan  2022                      3444000   
+0  AB9   Abyei Area  2022                    56000.000   
+1  AFG  Afghanistan  2022                  3444000.000   
 2  AGO       Angola  2022                          NaN   
 3  ALB      Albania  2022                          NaN   
 4  ARG    Argentina  2022                          NaN   
 
    Conflict Stock Displacement (Raw)  Conflict Internal Displacements  \
-0                              55705                            56000   
-1                            3443895                            32000   
+0                          55705.000                        56000.000   
+1                        3443895.000                        32000.000   
 2                                NaN                              NaN   
 3                                NaN                              NaN   
 4                                NaN                              NaN   
 
    Conflict Internal Displacements (Raw)  Disaster Internal Displacements  \
-0                                  55750                            29000   
-1                                  32424                           220000   
-2                                    NaN                             1800   
-3                                    NaN                              320   
-4                                    NaN                              730   
+0                              55750.000                        29000.000   
+1                              32424.000                       220000.000   
+2                                    NaN                         1800.000   
+3                                    NaN                          320.000   
+4                                    NaN                          730.000   
 
    Disaster Internal Displacements (Raw)  Disaster Stock Displacement  \
-0                                  28803                          NaN   
-1                                 220387                      2482000   
-2                                   1771                          NaN   
-3                                    318                          NaN   
-4                                    731                          NaN   
+0                              28803.000                          NaN   
+1                             220387.000                  2482000.000   
+2                               1771.000                          NaN   
+3                                318.000                          NaN   
+4                                731.000                          NaN   
 
    Disaster Stock Displacement (Raw)  
 0                                NaN  
-1                            2482264  
+1                        2482264.000  
 2                                NaN  
 3                                NaN  
 4                                NaN  
@@ -7861,6 +7861,7 @@ README
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">idmc</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">basic_exploration</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7881,56 +7882,56 @@ top      PER  Peru
 freq      13    13
 -----------------------------------------------------------------------------------------
 Datos de tipo int64: 
-       Year
-count  1710
-mean   2017
-std       4
-min    2010
-25%    2014
-50%    2017
-75%    2020
-max    2022
+          Year
+count 1710.000
+mean  2016.570
+std      3.621
+min   2010.000
+25%   2014.000
+50%   2017.000
+75%   2020.000
+max   2022.000
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Conflict Stock Displacement  Conflict Stock Displacement (Raw)  \
-count                          713                                720   
-mean                        723437                             716414   
-std                        1367440                            1362612   
-min                              2                                  0   
-25%                          23000                              21044   
-50%                         171000                             162950   
-75%                         641000                             636591   
-max                        7600000                            7600000   
+count                      713.000                            720.000   
+mean                    723437.139                         716414.443   
+std                    1367439.579                        1362612.417   
+min                          2.000                              0.000   
+25%                      23000.000                          21043.750   
+50%                     171000.000                         162950.000   
+75%                     641000.000                         636591.250   
+max                    7600000.000                        7600000.000   
 
        Conflict Internal Displacements  Conflict Internal Displacements (Raw)  \
-count                              455                                    641   
-mean                            292756                                 207823   
-std                             954625                                 814963   
-min                                  2                                      0   
-25%                               3650                                      0   
-50%                              64000                                   5776   
-75%                             250500                                 145287   
-max                           16870000                               16870323   
+count                          455.000                                641.000   
+mean                        292755.637                             207823.445   
+std                         954624.851                             814962.524   
+min                              2.000                                  0.000   
+25%                           3650.000                                  0.000   
+50%                          64000.000                               5776.000   
+75%                         250500.000                             145287.000   
+max                       16870000.000                           16870323.000   
 
        Disaster Internal Displacements  Disaster Internal Displacements (Raw)  \
-count                             1512                                   1528   
-mean                            212329                                 210118   
-std                             923575                                 918980   
-min                                  1                                      0   
-25%                                730                                    654   
-50%                               6600                                   6376   
-75%                              46000                                  44911   
-max                           15920000                               15920060   
+count                         1512.000                               1528.000   
+mean                        212329.422                             210117.556   
+std                         923574.707                             918980.382   
+min                              1.000                                  0.000   
+25%                            730.000                                654.250   
+50%                           6600.000                               6376.000   
+75%                          46000.000                              44911.250   
+max                       15920000.000                           15920060.000   
 
        Disaster Stock Displacement  Disaster Stock Displacement (Raw)  
-count                          371                                375  
-mean                         71438                              70678  
-std                         221517                             220455  
-min                              2                                  0  
-25%                            255                                234  
-50%                           3000                               2663  
-75%                          32000                              32324  
-max                        2482000                            2482264  
+count                      371.000                            375.000  
+mean                     71438.256                          70677.557  
+std                     221517.355                         220455.033  
+min                          2.000                              0.000  
+25%                        255.000                            234.500  
+50%                       3000.000                           2663.000  
+75%                      32000.000                          32323.500  
+max                    2482000.000                        2482264.000  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 ISO3                                        0
@@ -7945,6 +7946,7 @@ Disaster Internal Displacements (Raw)     182
 Disaster Stock Displacement              1339
 Disaster Stock Displacement (Raw)        1335
 dtype: int64
+(1710, 11)
 Datos de tipo object: 
        ISO3 Country         Sex     Cause
 count   918     918         918       918
@@ -7953,25 +7955,35 @@ top     MLI    Mali  Both sexes  Disaster
 freq     12      12         306       534
 -----------------------------------------------------------------------------------------
 Datos de tipo int64: 
-       Year    0-1     0-4    0-14    0-17    0-24    5-11    5-14  12-14  \
-count   918    918     918     918     918     918     918     918    918   
-mean   2022  15157   36693  103247  120978  157295   47519   66554  19035   
-std       1  45720  109562  302162  353873  459627  137901  193801  56451   
-min    2021      0       0       0       0       0       0       0      0   
-25%    2021     10      27      84     100     135      41      57     16   
-50%    2022    314     782    2285    2706    3603    1090    1496    434   
-75%    2022   5039   12805   38339   45805   61508   17894   25748   7433   
-max    2022 439399 1042519 2645384 3015088 3732057 1183796 1608713 550679   
+          Year        0-1         0-4        0-14        0-17        0-24  \
+count  918.000    918.000     918.000     918.000     918.000     918.000   
+mean  2021.503  15156.980   36692.821  103246.843  120977.943  157295.035   
+std      0.500  45720.454  109562.359  302162.403  353872.570  459627.323   
+min   2021.000      0.000       0.000       0.000       0.000       0.000   
+25%   2021.000     10.000      27.250      84.500     100.250     135.250   
+50%   2022.000    314.500     782.500    2285.000    2706.000    3603.000   
+75%   2022.000   5039.000   12804.750   38339.250   45804.750   61507.750   
+max   2022.000 439399.000 1042519.000 2645384.000 3015088.000 3732057.000   
 
-       12-16  15-17   15-24   25-64     65+  
-count    918    918     918     918     918  
-mean   31005  17731   54048  112155   14403  
-std    91986  52677  160344  329774   59616  
-min        0      0       0       0       0  
-25%       26     15      48     154      22  
-50%      718    438    1429    3652     401  
-75%    12059   6727   21202   49753    5593  
-max   894072 524753 1636630 3417821 1151359  
+             5-11        5-14      12-14      12-16      15-17       15-24  \
+count     918.000     918.000    918.000    918.000    918.000     918.000   
+mean    47519.259   66554.031  19034.765  31004.797  17731.070   54048.205   
+std    137901.070  193801.364  56451.056  91985.701  52677.277  160343.959   
+min         0.000       0.000      0.000      0.000      0.000       0.000   
+25%        40.750      57.250     16.000     26.250     15.250      48.250   
+50%      1089.500    1495.500    433.500    718.000    438.500    1429.000   
+75%     17893.750   25747.500   7433.250  12059.000   6727.250   21202.500   
+max   1183796.000 1608713.000 550679.000 894072.000 524753.000 1636630.000   
+
+            25-64         65+  
+count     918.000     918.000  
+mean   112155.305   14403.076  
+std    329773.556   59615.730  
+min         0.000       0.000  
+25%       153.500      22.250  
+50%      3652.000     401.000  
+75%     49753.250    5593.000  
+max   3417821.000 1151359.000  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 ISO3       0
@@ -7993,6 +8005,7 @@ Cause      0
 25-64      0
 65+        0
 dtype: int64
+(918, 18)
 Datos de tipo object: 
        Title: Global Internal Displacement Database (GIDD) Unnamed: 1  \
 count                                                  61          24   
@@ -8011,6 +8024,7 @@ Title: Global Internal Displacement Database (GIDD)    19
 Unnamed: 1                                             56
 Unnamed: 2                                             58
 dtype: int64
+(80, 3)
 </pre>
 </div>
 </div>
@@ -8102,7 +8116,7 @@ Nombre de la hoja: Sexo
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8140,7 +8154,7 @@ Nombre de la hoja: Gráfica (Sexo )
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8177,7 +8191,7 @@ Nombre de la hoja: Lugar Entrada
 4                    35                 28          1          2  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8216,7 +8230,7 @@ Nombre de la hoja: CCAA
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8246,7 +8260,7 @@ Nombre de la hoja: Provincias
 4         NaN                                                NaN        NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8290,7 +8304,7 @@ Nombre de la hoja: Gráfica Evolución (L. Entrada)
 4        NaN        NaN        NaN        NaN         NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8347,7 +8361,7 @@ Nombre de la hoja: Gráfica Evolución (Soli)
 4                                            % Incr.  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8385,7 +8399,7 @@ Nombre de la hoja: Admisibilidad
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8430,7 +8444,7 @@ Nombre de la hoja: Resoluciones
 4        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8470,7 +8484,7 @@ Nombre de la hoja: Resoluciones H y M
 4                   NaN        NaN        NaN        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8513,7 +8527,7 @@ Nombre de la hoja: Dublín (recibidas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8543,7 +8557,7 @@ Nombre de la hoja: Dublín (enviadas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8573,7 +8587,7 @@ Nombre de la hoja: Apátridas (evolución)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8619,7 +8633,7 @@ Nombre de la hoja: Sexo
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8657,7 +8671,7 @@ Nombre de la hoja: Gráfica (Sexo )
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8694,7 +8708,7 @@ Nombre de la hoja: Lugar Entrada
 4                    74                  6         17          1  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8740,7 +8754,7 @@ Nombre de la hoja: Reasentamiento
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8778,7 +8792,7 @@ Nombre de la hoja: CCAA
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8808,7 +8822,7 @@ Nombre de la hoja: Provincias
 4         NaN                                                NaN        NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8852,7 +8866,7 @@ Nombre de la hoja: Gráfica Evolución (L. Entrada)
 4        NaN        NaN        NaN        NaN         NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8909,7 +8923,7 @@ Nombre de la hoja: Gráfica Evolución (Soli)
 4                                            % Incr.  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8947,7 +8961,7 @@ Nombre de la hoja: Admisibilidad
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -8992,7 +9006,7 @@ Nombre de la hoja: Resoluciones (2)
 4        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9032,7 +9046,7 @@ Nombre de la hoja: Resoluciones H y M (2)
 4                   NaN        NaN        NaN        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9075,7 +9089,7 @@ Nombre de la hoja: Dublín (recibidas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9086,6 +9100,10 @@ max           NaN
 -----------------------------------------------------------------------------------------
 Datos de tipo object: 
                                                Unnamed: 1  Unnamed: 2
+count                                                  28          26
+unique                                                 28          24
+top     Peticiones recibidas en aplicación del Reglame...           1
+freq                                                    1           3                                               Unnamed: 1  Unnamed: 2
 count                                                  28          26
 unique                                                 28          24
 top     Peticiones recibidas en aplicación del Reglame...           1
@@ -9105,7 +9123,7 @@ Nombre de la hoja: Dublín (enviadas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9135,7 +9153,7 @@ Nombre de la hoja: Apátridas (evolución)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9175,7 +9193,7 @@ Nombre de la hoja: Sexo
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9213,7 +9231,7 @@ Nombre de la hoja: Gráfica (Sexo )
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9250,7 +9268,7 @@ Nombre de la hoja: Lugar Entrada
 4                    28                  6          7          0  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9289,7 +9307,7 @@ Nombre de la hoja: CCAA
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9319,7 +9337,7 @@ Nombre de la hoja: Provincias
 4         NaN                                                NaN        NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9363,7 +9381,7 @@ Nombre de la hoja: Gráfica Evolución (L. Entrada)
 4        NaN        NaN        NaN        NaN         NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9420,7 +9438,7 @@ Nombre de la hoja: Gráfica Evolución (Soli)
 4                                            % Incr.  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9458,7 +9476,7 @@ Nombre de la hoja: Admisibilidad
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9503,7 +9521,7 @@ Nombre de la hoja: Resoluciones
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9542,7 +9560,7 @@ Nombre de la hoja: Resoluciones H y M
 4                   NaN        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9583,7 +9601,7 @@ Nombre de la hoja: Dublín (recibidas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9613,7 +9631,7 @@ Nombre de la hoja: Dublín (enviadas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -9643,7 +9661,7 @@ Nombre de la hoja: Apátridas (evolución)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -10878,17 +10896,17 @@ dtype: int64
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>AdmisibilidaddeSolicitudesProtección InternacionalPorpaises
    Nacionalidad   Admitidas  No admitidas  Denegadas  Unnamed: 4
-0     AFGANISTAN         45             1          0         NaN
-1        ALBANIA          5             1          0         NaN
-2         ANGOLA          6             1         10         NaN
-3        ARGELIA        171             4         25         NaN
-4      ARGENTINA          4             0          1         NaN
+0     AFGANISTAN     45.000             1          0         NaN
+1        ALBANIA      5.000             1          0         NaN
+2         ANGOLA      6.000             1         10         NaN
+3        ARGELIA    171.000             4         25         NaN
+4      ARGENTINA      4.000             0          1         NaN
 ..           ...        ...           ...        ...         ...
-92     VENEZUELA         24             0          4         NaN
-93         YEMEN          5             0          0         NaN
-94        ZAMBIA          1             0          0         NaN
-95      ZIMBABWE          4             0          0         NaN
-96         Total          2           112        364         NaN
+92     VENEZUELA     24.000             0          4         NaN
+93         YEMEN      5.000             0          0         NaN
+94        ZAMBIA      1.000             0          0         NaN
+95      ZIMBABWE      4.000             0          0         NaN
+96         Total      2.056           112        364         NaN
 
 [97 rows x 5 columns]
 Datos de tipo object: 
@@ -10900,25 +10918,25 @@ freq               1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Admitidas  Unnamed: 4
-count         97           0
-mean          21         NaN
-std           37         NaN
-min            0         NaN
-25%            2         NaN
-50%            7         NaN
-75%           22         NaN
-max          226         NaN
+count     97.000       0.000
+mean      21.217         NaN
+std       37.167         NaN
+min        0.000         NaN
+25%        2.000         NaN
+50%        7.000         NaN
+75%       22.000         NaN
+max      226.000         NaN
 -----------------------------------------------------------------------------------------
 Datos de tipo int64: 
        No admitidas  Denegadas
-count            97         97
-mean              2          8
-std              11         37
-min               0          0
-25%               0          0
-50%               0          1
-75%               1          3
-max             112        364
+count        97.000     97.000
+mean          2.309      7.505
+std          11.446     37.333
+min           0.000      0.000
+25%           0.000      0.000
+50%           0.000      1.000
+75%           1.000      3.000
+max         112.000    364.000
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Nacionalidad      0
@@ -11010,7 +11028,7 @@ freq             5            11          13
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Unnamed: 13
-count            0
+count        0.000
 mean           NaN
 std            NaN
 min            NaN
@@ -11038,18 +11056,18 @@ dtype: int64
 -----------------------------------------------------------------------------------------
 
 SilicitantesProteccionInternacional2012PorPaisescsv
-   Nacionalidad   Hombres  Mujeres  Total
-0     Afganistán       33       13     46
-1        Albania        3        3      6
-2         Angola        9        8     17
-3        Argelia      174       28    202
-4      Argentina        4        1      5
-..           ...      ...      ...    ...
-93     Venezuela       16       12     28
-94         Yemen        3        2      5
-95        Zambia        1      NaN      1
-96      Zimbabwe        3        1      4
-97         Total        2      807      3
+   Nacionalidad   Hombres  Mujeres   Total
+0     Afganistán   33.000   13.000  46.000
+1        Albania    3.000    3.000   6.000
+2         Angola    9.000    8.000  17.000
+3        Argelia  174.000   28.000 202.000
+4      Argentina    4.000    1.000   5.000
+..           ...      ...      ...     ...
+93     Venezuela   16.000   12.000  28.000
+94         Yemen    3.000    2.000   5.000
+95        Zambia    1.000      NaN   1.000
+96      Zimbabwe    3.000    1.000   4.000
+97         Total    1.781  807.000   2.588
 
 [98 rows x 4 columns]
 Datos de tipo object: 
@@ -11060,15 +11078,15 @@ top       Afganistán
 freq               1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
-       Hombres  Mujeres  Total
-count       95       74     98
-mean        19       22     26
-std         31       94     44
-min          1        1      1
-25%          2        2      3
-50%          7        5      9
-75%         20       14     28
-max        174      807    254
+       Hombres  Mujeres   Total
+count   95.000   74.000  98.000
+mean    18.766   21.811  26.435
+std     30.934   94.490  44.071
+min      1.000    1.000   1.000
+25%      2.000    2.000   2.691
+50%      7.000    5.000   9.000
+75%     20.500   14.500  28.000
+max    174.000  807.000 254.000
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Nacionalidad      0
@@ -11080,26 +11098,26 @@ dtype: int64
 
 SolicitantesProtección InternacionalPorCCAA
       Comunidad Autónoma  Solicitantes
-0              Andalucía           215
-1                 Aragón             5
-2               Asturias             9
-3              Cantabria            19
-4     Castilla La Mancha            11
-5        Castilla y León            15
-6               Cataluña           206
-7                 Ceuta            184
-8    Comunidad de Madrid             1
-9    Comunidad de Murcia            13
-10  Comunidad Valenciana           185
-11           Extremadura             2
-12               Galicia            10
-13        Islas Baleares            12
-14        Islas Canarias            39
-15              La Rioja             1
-16               Melilla            33
-17               Navarra             5
-18            País Vasco            78
-19                Total              2
+0              Andalucía       215.000
+1                 Aragón         5.000
+2               Asturias         9.000
+3              Cantabria        19.000
+4     Castilla La Mancha        11.000
+5        Castilla y León        15.000
+6               Cataluña       206.000
+7                 Ceuta        184.000
+8    Comunidad de Madrid         1.280
+9    Comunidad de Murcia        13.000
+10  Comunidad Valenciana       185.000
+11           Extremadura         2.000
+12               Galicia        10.000
+13        Islas Baleares        12.000
+14        Islas Canarias        39.000
+15              La Rioja         1.000
+16               Melilla        33.000
+17               Navarra         5.000
+18            País Vasco        78.000
+19                Total          2.322
 20                   NaN           NaN
 21                   NaN           NaN
 22                   NaN           NaN
@@ -11112,14 +11130,14 @@ freq                    1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Solicitantes
-count            20
-mean             52
-std              77
-min               1
-25%               5
-50%              12
-75%              49
-max             215
+count        20.000
+mean         52.280
+std          76.789
+min           1.000
+25%           5.000
+50%          12.500
+75%          48.750
+max         215.000
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Comunidad Autónoma    3
@@ -11164,7 +11182,7 @@ freq               1                   17                48       81     52
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Unnamed: 5
-count           0
+count       0.000
 mean          NaN
 std           NaN
 min           NaN
@@ -11185,47 +11203,47 @@ dtype: int64
 
 SolicitantesProtección InternacionalPorProvincia
      Provincia   Solicitantes
-0      A CORUÑA             7
-1      ALBACETE             8
-2      ALICANTE            33
-3       ALMERIA             4
-4         ARABA             8
-5      ASTURIAS             9
-6      BALEARES            12
-7     BARCELONA           200
-8       BIZKAIA            62
-9        BURGOS             6
-10      CACERES             2
-11        CADIZ            51
-12    CANTABRIA            19
-13    CASTELLON             1
-14        CEUTA           184
-15      CORDOBA            26
-16       GERONA             3
-17     GIPUZKOA             8
-18      GRANADA            15
-19  GUADALAJARA             3
-20       HUELVA             1
-21     LA RIOJA             1
-22   LAS PALMAS            33
-23         LEON             3
-24         LUGO             1
-25       MADRID             1
-26       MALAGA            58
-27      MELILLA            33
-28       MURCIA            13
-29      NAVARRA             5
-30     PALENCIA             2
-31   PONTEVEDRA             2
-32    SALAMANCA             1
-33      SEGOVIA             1
-34      SEVILLA            60
-35        SORIA             2
-36    TARRAGONA             3
-37     TENERIFE             6
-38     VALENCIA           151
-39     ZARAGOZA             5
-40       Total              2
+0      A CORUÑA         7.000
+1      ALBACETE         8.000
+2      ALICANTE        33.000
+3       ALMERIA         4.000
+4         ARABA         8.000
+5      ASTURIAS         9.000
+6      BALEARES        12.000
+7     BARCELONA       200.000
+8       BIZKAIA        62.000
+9        BURGOS         6.000
+10      CACERES         2.000
+11        CADIZ        51.000
+12    CANTABRIA        19.000
+13    CASTELLON         1.000
+14        CEUTA       184.000
+15      CORDOBA        26.000
+16       GERONA         3.000
+17     GIPUZKOA         8.000
+18      GRANADA        15.000
+19  GUADALAJARA         3.000
+20       HUELVA         1.000
+21     LA RIOJA         1.000
+22   LAS PALMAS        33.000
+23         LEON         3.000
+24         LUGO         1.000
+25       MADRID         1.280
+26       MALAGA        58.000
+27      MELILLA        33.000
+28       MURCIA        13.000
+29      NAVARRA         5.000
+30     PALENCIA         2.000
+31   PONTEVEDRA         2.000
+32    SALAMANCA         1.000
+33      SEGOVIA         1.000
+34      SEVILLA        60.000
+35        SORIA         2.000
+36    TARRAGONA         3.000
+37     TENERIFE         6.000
+38     VALENCIA       151.000
+39     ZARAGOZA         5.000
+40       Total          2.322
 Datos de tipo object: 
        Provincia 
 count          41
@@ -11235,14 +11253,14 @@ freq            1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Solicitantes
-count            41
-mean             26
-std              47
-min               1
-25%               2
-50%               6
-75%              26
-max             200
+count        41.000
+mean         25.502
+std          47.108
+min           1.000
+25%           2.000
+50%           6.000
+75%          26.000
+max         200.000
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Provincia       0
@@ -11838,15 +11856,15 @@ TABLA 2-5
 0         NaN            NaN        NaN        NaN        NaN        NaN   
 1     % Incr.  P. Fronterizo    % Incr.   Embajada    % Incr.     C.I.E.   
 2           –           2644          –       1724          –          –   
-3          -6           1070        -60        349        -80          –   
-4         -21            454        -58         92        -74          –   
-5         -12            300        -34         74        -20        214   
-6          25            344         15        120         62        261   
-7         -32            401         17        186         55        160   
-8          96            381         -5        211         13        306   
-9          10           1039        173        346         64        587   
-10         74           6862        560        327         -5        785   
-11         80           3088        -55        264        -19        769   
+3      -6.010           1070    -59.530        349    -79.760          –   
+4     -20.560            454    -57.570         92    -73.640          –   
+5     -12.390            300    -33.920         74    -19.570        214   
+6      25.090            344     14.670        120     62.160        261   
+7     -31.740            401     16.570        186         55        160   
+8      96.360            381     -4.990        211     13.440        306   
+9      10.100           1039    172.700        346     63.980        587   
+10     73.690           6862    560.440        327     -5.490        785   
+11     79.700           3088        -55        264    -19.270        769   
 12          –          16583          –       3693          –       3082   
 
    Unnamed: 8 Unnamed: 9  
@@ -11857,11 +11875,11 @@ TABLA 2-5
 4           –       3007  
 5           –       2744  
 6           –       3422  
-7         -39       2588  
-8          91       4513  
-9          92       5952  
-10         34      14887  
-11         -2      16544  
+7     -38.700       2588  
+8      91.250       4513  
+9      91.830       5952  
+10     33.730      14887  
+11     -2.040      16544  
 12          –      65838  
 Datos de tipo object: 
        TABLA 2-5.  \
@@ -11920,15 +11938,15 @@ TABLA 2-6
       Unnamed: 1 Unnamed: 2  
 0   Solicitantes    % Incr.  
 1           7664          –  
-2           4517        -41  
-3           3007        -33  
-4           2744         -9  
-5           3422         25  
-6           2588        -24  
-7           4513         74  
-8           5952         32  
-9          14887        150  
-10         16544         11  
+2           4517    -41.060  
+3           3007    -33.430  
+4           2744     -8.750  
+5           3422     24.710  
+6           2588    -24.370  
+7           4513     74.380  
+8           5952     31.890  
+9          14887    150.120  
+10         16544     11.130  
 11         65838          –  
 Datos de tipo object: 
        TABLA 2-6. EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL 2007-2016  \
@@ -12141,6 +12159,10 @@ dtype: int64
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
   warn(msg)
 C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
   warn(msg)
@@ -12745,29 +12767,29 @@ TABLA 2-5
           Unnamed: 2         Unnamed: 3        Unnamed: 4 Unnamed: 5  \
 0   Porcentaje Incr.  Puesto fronterizo  Porcentaje Incr.   Embajada   
 1                NaN               1070               NaN        349   
-2                -21                454               -58         92   
-3                -12                300               -34         74   
-4                 25                344                15        120   
-5                -32                401                17        186   
-6                 96                381                -5        211   
-7                 10               1039               173        346   
-8                 74               6862               560        327   
-9                 80               3088               -55        264   
-10                92               6148                99        341   
+2            -20.560                454           -57.570         92   
+3            -12.390                300           -33.920         74   
+4             25.090                344            14.670        120   
+5            -31.740                401            16.570        186   
+6             96.360                381            -4.990        211   
+7             10.100               1039           172.700        346   
+8             73.690               6862           560.440        327   
+9             79.700               3088               -55        264   
+10            92.160               6148            99.090        341   
 11               NaN              20087               NaN       2310   
 
           Unnamed: 6 Unnamed: 7        Unnamed: 8 Unnamed: 9  
 0   Porcentaje Incr.     C.I.E.  Porcentaje Incr.      Total  
 1                NaN          0               NaN       4517  
 2            -73,64           0               NaN       3007  
-3                -20        214               NaN       2744  
-4                 62        261                22       3422  
-5                 55        160               -39       2588  
-6                 13        306                91       4513  
-7                 64        587                92       5952  
-8                 -5        785                34      14887  
-9                -19        769                -2      16544  
-10                29       1379                79      31740  
+3            -19.570        214               NaN       2744  
+4             62.160        261            21.960       3422  
+5                 55        160           -38.700       2588  
+6             13.440        306            91.250       4513  
+7             63.980        587            91.830       5952  
+8             -5.490        785            33.730      14887  
+9            -19.270        769            -2.040      16544  
+10            29.170       1379            79.320      31740  
 11               NaN       4461               NaN      89914  
 Datos de tipo object: 
        TABLA 2-5.  \
@@ -12840,15 +12862,15 @@ TABLA 2-6
                Unnamed: 2  
 0   Porcentaje Incremento  
 1                     NaN  
-2                     -33  
-3                      -9  
-4                      25  
-5                     -24  
-6                      74  
-7                      32  
-8                     150  
-9                      11  
-10                     92  
+2                 -33.430  
+3                  -8.750  
+4                  24.710  
+5                 -24.370  
+6                  74.380  
+7                  31.890  
+8                 150.120  
+9                  11.130  
+10                 91.850  
 11                    NaN  
 Datos de tipo object: 
        TABLA 2-6.  \
@@ -12908,15 +12930,15 @@ TABLA 2-7
    Unnamed: 2 Unnamed: 3             Unnamed: 4  
 0     Mujeres      Total  Porcentaje Incremento  
 1         273        820                    NaN  
-2           8         51                    -94  
-3          43        171                    235  
-4          14         89                    -48  
-5         168        478                    437  
-6         448       1142                    139  
-7         529       1334                     17  
-8         469       1149                    -14  
-9         566       1403                     22  
-10        779       2425                     73  
+2           8         51                -93.780  
+3          43        171                235.290  
+4          14         89                -47.950  
+5         168        478                437.080  
+6         448       1142                138.910  
+7         529       1334                 16.810  
+8         469       1149                -13.870  
+9         566       1403                 22.110  
+10        779       2425                 72.840  
 11       3297       9062                    NaN  
 Datos de tipo object: 
        TABLA 2-7.  \
@@ -13101,16 +13123,6 @@ Unnamed: 6                                                                      
 dtype: int64
 -----------------------------------------------------------------------------------------
 
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
-  warn(msg)
-C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
-  warn(msg)
 </pre>
 </div>
 </div>
@@ -13335,15 +13347,15 @@ TABLA 2-3
      Unnamed: 2         Unnamed: 3   Unnamed: 4 Unnamed: 5   Unnamed: 6  \
 0   Variación %  Puesto fronterizo  Variación %  C.I.E.(*)  Variación %   
 1           NaN                454          NaN          0          NaN   
-2           -12                300          -34        214          NaN   
-3            25                344           15        261           22   
-4           -32                401           17        160          -39   
-5            96                381           -5        306           91   
-6            10               1039          173        587           92   
-7            74               6862          560        785           34   
-8            80               3088          -55        769           -2   
-9            92               6148           99       1379           79   
-10           97               6518            6       1776           29   
+2       -12.390                300      -33.920        214          NaN   
+3        25.090                344       14.670        261       21.960   
+4       -31.740                401       16.570        160      -38.700   
+5        96.360                381       -4.990        306       91.250   
+6        10.100               1039      172.700        587       91.830   
+7        73.690               6862      560.440        785       33.730   
+8        79.700               3088          -55        769       -2.040   
+9        92.160               6148       99.090       1379       79.320   
+10       97.240               6518        6.020       1776       28.790   
 11          NaN              25535          NaN       6237          NaN   
 12          NaN                NaN          NaN        NaN          NaN   
 13          NaN                NaN          NaN        NaN          NaN   
@@ -13351,15 +13363,15 @@ TABLA 2-3
       Unnamed: 7   Unnamed: 8 Unnamed: 9  Unnamed: 10  
 0   Embajada(**)  Variación %      Total  Variación %  
 1             92          NaN       3007          NaN  
-2             74          -20       2744           -9  
-3            120           62       3422           25  
-4            186           55       2588          -24  
-5            211           13       4513           74  
-6            346           64       5952           32  
-7            327           -5      14887          150  
-8            264          -19      16544           11  
-9            341           29      31740           92  
-10           371            9      55749           76  
+2             74      -19.570       2744       -8.750  
+3            120       62.160       3422       24.710  
+4            186           55       2588      -24.370  
+5            211       13.440       4513       74.380  
+6            346       63.980       5952       31.890  
+7            327       -5.490      14887      150.120  
+8            264      -19.270      16544       11.130  
+9            341       29.170      31740       91.850  
+10           371        8.800      55749       75.640  
 11          2332          NaN     141146          NaN  
 12           NaN          NaN        NaN          NaN  
 13           NaN          NaN        NaN          NaN  
@@ -13504,15 +13516,15 @@ TABLA 2-5
    Unnamed: 2 Unnamed: 3   Unnamed: 4  
 0     Mujeres      Total  Variación %  
 1           8         51          NaN  
-2          43        171          235  
-3          14         89          -48  
-4         168        478          437  
-5         448       1142          139  
-6         529       1334           17  
-7         469       1149          -14  
-8         566       1403           22  
-9         779       2425           73  
-10        668       1900          -22  
+2          43        171      235.290  
+3          14         89      -47.950  
+4         168        478      437.080  
+5         448       1142      138.910  
+6         529       1334       16.810  
+7         469       1149      -13.870  
+8         566       1403       22.110  
+9         779       2425       72.840  
+10        668       1900      -21.650  
 11       3692      10142          NaN  
 Datos de tipo object: 
        TABLA 2-5.  \
