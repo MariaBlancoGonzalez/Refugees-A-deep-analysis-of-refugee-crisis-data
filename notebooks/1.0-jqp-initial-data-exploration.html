@@ -7496,6 +7496,7 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{:.0f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span>
 </pre></div>
 </div>
 </div>
@@ -7687,25 +7688,25 @@ a.anchor-link {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Datos de tipo int64: 
-               year      refugees  asylum_seekers  returned_refugees  \
-count  64809.000000  6.480900e+04    64809.000000       64809.000000   
-mean    2016.393356  3.440013e+03      564.166119          73.480659   
-std        3.722613  5.525597e+04     7455.730894        2460.282939   
-min     2010.000000  0.000000e+00        0.000000           0.000000   
-25%     2013.000000  5.000000e+00        0.000000           0.000000   
-50%     2017.000000  1.200000e+01        8.000000           0.000000   
-75%     2020.000000  8.800000e+01       57.000000           0.000000   
-max     2022.000000  3.737369e+06   940668.000000      381275.000000   
+       year  refugees  asylum_seekers  returned_refugees    idps  \
+count 64809     64809           64809              64809   64809   
+mean   2016      3440             564                 73    7089   
+std       4     55256            7456               2460  163175   
+min    2010         0               0                  0       0   
+25%    2013         5               0                  0       0   
+50%    2017        12               8                  0       0   
+75%    2020        88              57                  0       0   
+max    2022   3737369          940668             381275 8252788   
 
-               idps  returned_idps      stateless           ooc  
-count  6.480900e+04   6.480900e+04   64809.000000  6.480900e+04  
-mean   7.088696e+03   7.061573e+02     756.625191  4.374958e+02  
-std    1.631746e+05   2.365424e+04   19980.220686  2.018268e+04  
-min    0.000000e+00   0.000000e+00       0.000000  0.000000e+00  
-25%    0.000000e+00   0.000000e+00       0.000000  0.000000e+00  
-50%    0.000000e+00   0.000000e+00       0.000000  0.000000e+00  
-75%    0.000000e+00   0.000000e+00       0.000000  0.000000e+00  
-max    8.252788e+06   2.134349e+06  955399.000000  3.206577e+06  
+       returned_idps  stateless     ooc  
+count          64809      64809   64809  
+mean             706        757     437  
+std            23654      19980   20183  
+min                0          0       0  
+25%                0          0       0  
+50%                0          0       0  
+75%                0          0       0  
+max          2134349     955399 3206577  
 -----------------------------------------------------------------------------------------
 Datos de tipo object: 
                 coo_name    coo coo_iso                  coa_name    coa  \
@@ -7721,15 +7722,15 @@ top        USA
 freq      2305  
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
-                oip           hst
-count  1.000000e+02  5.964000e+03
-mean   1.966112e+05  6.264660e+03
-std    4.195870e+05  2.100905e+05
-min    5.000000e+00  0.000000e+00
-25%    8.218250e+03  0.000000e+00
-50%    2.316500e+04  0.000000e+00
-75%    1.647600e+05  0.000000e+00
-max    2.453862e+06  1.520972e+07
+          oip      hst
+count     100     5964
+mean   196611     6265
+std    419587   210090
+min         5        0
+25%      8218        0
+50%     23165        0
+75%    164760        0
+max   2453862 15209720
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 year                     0
@@ -7748,6 +7749,267 @@ stateless                0
 ooc                      0
 oip                  64709
 hst                  58845
+dtype: int64
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Exploraci%C3%B3n-datos-enriquecimiento">Exploración datos enriquecimiento<a class="anchor-link" href="#Exploraci%C3%B3n-datos-enriquecimiento">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">idmc</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">'../data/raw/IDMC_Internal_Displacement_Conflict-Violence_Disasters.xlsx'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">idmc</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1_Displacement_data
+  ISO3         Name  Year  Conflict Stock Displacement  \
+0  AB9   Abyei Area  2022                        56000   
+1  AFG  Afghanistan  2022                      3444000   
+2  AGO       Angola  2022                          NaN   
+3  ALB      Albania  2022                          NaN   
+4  ARG    Argentina  2022                          NaN   
+
+   Conflict Stock Displacement (Raw)  Conflict Internal Displacements  \
+0                              55705                            56000   
+1                            3443895                            32000   
+2                                NaN                              NaN   
+3                                NaN                              NaN   
+4                                NaN                              NaN   
+
+   Conflict Internal Displacements (Raw)  Disaster Internal Displacements  \
+0                                  55750                            29000   
+1                                  32424                           220000   
+2                                    NaN                             1800   
+3                                    NaN                              320   
+4                                    NaN                              730   
+
+   Disaster Internal Displacements (Raw)  Disaster Stock Displacement  \
+0                                  28803                          NaN   
+1                                 220387                      2482000   
+2                                   1771                          NaN   
+3                                    318                          NaN   
+4                                    731                          NaN   
+
+   Disaster Stock Displacement (Raw)  
+0                                NaN  
+1                            2482264  
+2                                NaN  
+3                                NaN  
+4                                NaN  
+2_IDPs_SADD_estimates
+  ISO3     Country  Year         Sex     Cause    0-1    0-4    0-14    0-17  \
+0  BEN       Benin  2022  Both sexes  Disaster    463   1116    2919    3366   
+1  FRA      France  2022        Male  Disaster      0      1       4       5   
+2  SEN     Senegal  2022  Both sexes  Disaster     28     69     190     220   
+3  SEN     Senegal  2022        Male  Disaster     14     35      96     111   
+4  AZE  Azerbaijan  2021  Both sexes  Conflict  16797  44786  156670  183880   
+
+     0-24   5-11    5-14  12-14  12-16  15-17  15-24   25-64    65+  
+0    4255   1321    1803    483    785    447   1337    2426    211  
+1       6      2       3      1      1      1      3      11      4  
+2     281     87     121     34     54     31     91     164     15  
+3     142     44      61     17     27     16     46      78      6  
+4  243594  80580  111884  31305  49929  27210  86924  367262  43983  
+README
+  Title: Global Internal Displacement Database (GIDD)  Unnamed: 1 Unnamed: 2
+0  File name: IDMC_Internal_Displacement_Conflict...          NaN        NaN
+1  Creator: Internal Displacement monitoring Cent...          NaN        NaN
+2                                     Date extracted   02/12/2023        NaN
+3                                        Last update   15/11/2023        NaN
+4                                                NaN          NaN        NaN
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">idmc</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">basic_exploration</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Datos de tipo object: 
+        ISO3  Name
+count   1710  1710
+unique   206   206
+top      PER  Peru
+freq      13    13
+-----------------------------------------------------------------------------------------
+Datos de tipo int64: 
+       Year
+count  1710
+mean   2017
+std       4
+min    2010
+25%    2014
+50%    2017
+75%    2020
+max    2022
+-----------------------------------------------------------------------------------------
+Datos de tipo float64: 
+       Conflict Stock Displacement  Conflict Stock Displacement (Raw)  \
+count                          713                                720   
+mean                        723437                             716414   
+std                        1367440                            1362612   
+min                              2                                  0   
+25%                          23000                              21044   
+50%                         171000                             162950   
+75%                         641000                             636591   
+max                        7600000                            7600000   
+
+       Conflict Internal Displacements  Conflict Internal Displacements (Raw)  \
+count                              455                                    641   
+mean                            292756                                 207823   
+std                             954625                                 814963   
+min                                  2                                      0   
+25%                               3650                                      0   
+50%                              64000                                   5776   
+75%                             250500                                 145287   
+max                           16870000                               16870323   
+
+       Disaster Internal Displacements  Disaster Internal Displacements (Raw)  \
+count                             1512                                   1528   
+mean                            212329                                 210118   
+std                             923575                                 918980   
+min                                  1                                      0   
+25%                                730                                    654   
+50%                               6600                                   6376   
+75%                              46000                                  44911   
+max                           15920000                               15920060   
+
+       Disaster Stock Displacement  Disaster Stock Displacement (Raw)  
+count                          371                                375  
+mean                         71438                              70678  
+std                         221517                             220455  
+min                              2                                  0  
+25%                            255                                234  
+50%                           3000                               2663  
+75%                          32000                              32324  
+max                        2482000                            2482264  
+-----------------------------------------------------------------------------------------
+Valores nulos encontrados: 
+ISO3                                        0
+Name                                        0
+Year                                        0
+Conflict Stock Displacement               997
+Conflict Stock Displacement (Raw)         990
+Conflict Internal Displacements          1255
+Conflict Internal Displacements (Raw)    1069
+Disaster Internal Displacements           198
+Disaster Internal Displacements (Raw)     182
+Disaster Stock Displacement              1339
+Disaster Stock Displacement (Raw)        1335
+dtype: int64
+Datos de tipo object: 
+       ISO3 Country         Sex     Cause
+count   918     918         918       918
+unique  126     126           3         2
+top     MLI    Mali  Both sexes  Disaster
+freq     12      12         306       534
+-----------------------------------------------------------------------------------------
+Datos de tipo int64: 
+       Year    0-1     0-4    0-14    0-17    0-24    5-11    5-14  12-14  \
+count   918    918     918     918     918     918     918     918    918   
+mean   2022  15157   36693  103247  120978  157295   47519   66554  19035   
+std       1  45720  109562  302162  353873  459627  137901  193801  56451   
+min    2021      0       0       0       0       0       0       0      0   
+25%    2021     10      27      84     100     135      41      57     16   
+50%    2022    314     782    2285    2706    3603    1090    1496    434   
+75%    2022   5039   12805   38339   45805   61508   17894   25748   7433   
+max    2022 439399 1042519 2645384 3015088 3732057 1183796 1608713 550679   
+
+       12-16  15-17   15-24   25-64     65+  
+count    918    918     918     918     918  
+mean   31005  17731   54048  112155   14403  
+std    91986  52677  160344  329774   59616  
+min        0      0       0       0       0  
+25%       26     15      48     154      22  
+50%      718    438    1429    3652     401  
+75%    12059   6727   21202   49753    5593  
+max   894072 524753 1636630 3417821 1151359  
+-----------------------------------------------------------------------------------------
+Valores nulos encontrados: 
+ISO3       0
+Country    0
+Year       0
+Sex        0
+Cause      0
+0-1        0
+0-4        0
+0-14       0
+0-17       0
+0-24       0
+5-11       0
+5-14       0
+12-14      0
+12-16      0
+15-17      0
+15-24      0
+25-64      0
+65+        0
+dtype: int64
+Datos de tipo object: 
+       Title: Global Internal Displacement Database (GIDD) Unnamed: 1  \
+count                                                  61          24   
+unique                                                 49           9   
+top                                                Israel        2019   
+freq                                                    4          12   
+
+       Unnamed: 2  
+count          22  
+unique          4  
+top          IDPs  
+freq            9  
+-----------------------------------------------------------------------------------------
+Valores nulos encontrados: 
+Title: Global Internal Displacement Database (GIDD)    19
+Unnamed: 1                                             56
+Unnamed: 2                                             58
 dtype: int64
 </pre>
 </div>
@@ -7840,7 +8102,7 @@ Nombre de la hoja: Sexo
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -7878,7 +8140,7 @@ Nombre de la hoja: Gráfica (Sexo )
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -7915,7 +8177,7 @@ Nombre de la hoja: Lugar Entrada
 4                    35                 28          1          2  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -7954,7 +8216,7 @@ Nombre de la hoja: CCAA
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -7984,7 +8246,7 @@ Nombre de la hoja: Provincias
 4         NaN                                                NaN        NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8028,7 +8290,7 @@ Nombre de la hoja: Gráfica Evolución (L. Entrada)
 4        NaN        NaN        NaN        NaN         NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8085,7 +8347,7 @@ Nombre de la hoja: Gráfica Evolución (Soli)
 4                                            % Incr.  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8123,7 +8385,7 @@ Nombre de la hoja: Admisibilidad
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8168,7 +8430,7 @@ Nombre de la hoja: Resoluciones
 4        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8208,7 +8470,7 @@ Nombre de la hoja: Resoluciones H y M
 4                   NaN        NaN        NaN        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8251,7 +8513,7 @@ Nombre de la hoja: Dublín (recibidas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8281,7 +8543,7 @@ Nombre de la hoja: Dublín (enviadas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8311,7 +8573,7 @@ Nombre de la hoja: Apátridas (evolución)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8357,7 +8619,7 @@ Nombre de la hoja: Sexo
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8395,7 +8657,7 @@ Nombre de la hoja: Gráfica (Sexo )
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8432,7 +8694,7 @@ Nombre de la hoja: Lugar Entrada
 4                    74                  6         17          1  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8478,7 +8740,7 @@ Nombre de la hoja: Reasentamiento
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8516,7 +8778,7 @@ Nombre de la hoja: CCAA
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8546,7 +8808,7 @@ Nombre de la hoja: Provincias
 4         NaN                                                NaN        NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8590,7 +8852,7 @@ Nombre de la hoja: Gráfica Evolución (L. Entrada)
 4        NaN        NaN        NaN        NaN         NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8647,7 +8909,7 @@ Nombre de la hoja: Gráfica Evolución (Soli)
 4                                            % Incr.  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8685,7 +8947,7 @@ Nombre de la hoja: Admisibilidad
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8730,7 +8992,7 @@ Nombre de la hoja: Resoluciones (2)
 4        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8770,7 +9032,7 @@ Nombre de la hoja: Resoluciones H y M (2)
 4                   NaN        NaN        NaN        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8813,7 +9075,7 @@ Nombre de la hoja: Dublín (recibidas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8843,7 +9105,7 @@ Nombre de la hoja: Dublín (enviadas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8873,7 +9135,7 @@ Nombre de la hoja: Apátridas (evolución)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8913,7 +9175,7 @@ Nombre de la hoja: Sexo
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8951,7 +9213,7 @@ Nombre de la hoja: Gráfica (Sexo )
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -8988,7 +9250,7 @@ Nombre de la hoja: Lugar Entrada
 4                    28                  6          7          0  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9027,7 +9289,7 @@ Nombre de la hoja: CCAA
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9057,7 +9319,7 @@ Nombre de la hoja: Provincias
 4         NaN                                                NaN        NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9101,7 +9363,7 @@ Nombre de la hoja: Gráfica Evolución (L. Entrada)
 4        NaN        NaN        NaN        NaN         NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9158,7 +9420,7 @@ Nombre de la hoja: Gráfica Evolución (Soli)
 4                                            % Incr.  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9196,7 +9458,7 @@ Nombre de la hoja: Admisibilidad
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9241,7 +9503,7 @@ Nombre de la hoja: Resoluciones
 4        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9280,7 +9542,7 @@ Nombre de la hoja: Resoluciones H y M
 4                   NaN        NaN        NaN        NaN  
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9321,7 +9583,7 @@ Nombre de la hoja: Dublín (recibidas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9351,7 +9613,7 @@ Nombre de la hoja: Dublín (enviadas)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -9381,7 +9643,7 @@ Nombre de la hoja: Apátridas (evolución)
 4         NaN                                                           NaN
 Datos de tipo float64: 
        Unnamed: 0
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -10616,17 +10878,17 @@ dtype: int64
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>AdmisibilidaddeSolicitudesProtección InternacionalPorpaises
    Nacionalidad   Admitidas  No admitidas  Denegadas  Unnamed: 4
-0     AFGANISTAN     45.000             1          0         NaN
-1        ALBANIA      5.000             1          0         NaN
-2         ANGOLA      6.000             1         10         NaN
-3        ARGELIA    171.000             4         25         NaN
-4      ARGENTINA      4.000             0          1         NaN
+0     AFGANISTAN         45             1          0         NaN
+1        ALBANIA          5             1          0         NaN
+2         ANGOLA          6             1         10         NaN
+3        ARGELIA        171             4         25         NaN
+4      ARGENTINA          4             0          1         NaN
 ..           ...        ...           ...        ...         ...
-92     VENEZUELA     24.000             0          4         NaN
-93         YEMEN      5.000             0          0         NaN
-94        ZAMBIA      1.000             0          0         NaN
-95      ZIMBABWE      4.000             0          0         NaN
-96         Total      2.056           112        364         NaN
+92     VENEZUELA         24             0          4         NaN
+93         YEMEN          5             0          0         NaN
+94        ZAMBIA          1             0          0         NaN
+95      ZIMBABWE          4             0          0         NaN
+96         Total          2           112        364         NaN
 
 [97 rows x 5 columns]
 Datos de tipo object: 
@@ -10637,26 +10899,26 @@ top       AFGANISTAN
 freq               1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
-        Admitidas  Unnamed: 4
-count   97.000000         0.0
-mean    21.217072         NaN
-std     37.166896         NaN
-min      0.000000         NaN
-25%      2.000000         NaN
-50%      7.000000         NaN
-75%     22.000000         NaN
-max    226.000000         NaN
+       Admitidas  Unnamed: 4
+count         97           0
+mean          21         NaN
+std           37         NaN
+min            0         NaN
+25%            2         NaN
+50%            7         NaN
+75%           22         NaN
+max          226         NaN
 -----------------------------------------------------------------------------------------
 Datos de tipo int64: 
-       No admitidas   Denegadas
-count     97.000000   97.000000
-mean       2.309278    7.505155
-std       11.445852   37.332996
-min        0.000000    0.000000
-25%        0.000000    0.000000
-50%        0.000000    1.000000
-75%        1.000000    3.000000
-max      112.000000  364.000000
+       No admitidas  Denegadas
+count            97         97
+mean              2          8
+std              11         37
+min               0          0
+25%               0          0
+50%               0          1
+75%               1          3
+max             112        364
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Nacionalidad      0
@@ -10748,7 +11010,7 @@ freq             5            11          13
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Unnamed: 13
-count          0.0
+count            0
 mean           NaN
 std            NaN
 min            NaN
@@ -10776,18 +11038,18 @@ dtype: int64
 -----------------------------------------------------------------------------------------
 
 SilicitantesProteccionInternacional2012PorPaisescsv
-   Nacionalidad   Hombres  Mujeres    Total
-0     Afganistán   33.000     13.0   46.000
-1        Albania    3.000      3.0    6.000
-2         Angola    9.000      8.0   17.000
-3        Argelia  174.000     28.0  202.000
-4      Argentina    4.000      1.0    5.000
-..           ...      ...      ...      ...
-93     Venezuela   16.000     12.0   28.000
-94         Yemen    3.000      2.0    5.000
-95        Zambia    1.000      NaN    1.000
-96      Zimbabwe    3.000      1.0    4.000
-97         Total    1.781    807.0    2.588
+   Nacionalidad   Hombres  Mujeres  Total
+0     Afganistán       33       13     46
+1        Albania        3        3      6
+2         Angola        9        8     17
+3        Argelia      174       28    202
+4      Argentina        4        1      5
+..           ...      ...      ...    ...
+93     Venezuela       16       12     28
+94         Yemen        3        2      5
+95        Zambia        1      NaN      1
+96      Zimbabwe        3        1      4
+97         Total        2      807      3
 
 [98 rows x 4 columns]
 Datos de tipo object: 
@@ -10798,15 +11060,15 @@ top       Afganistán
 freq               1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
-          Hombres     Mujeres       Total
-count   95.000000   74.000000   98.000000
-mean    18.766116   21.810811   26.434571
-std     30.934436   94.490222   44.071359
-min      1.000000    1.000000    1.000000
-25%      2.000000    2.000000    2.691000
-50%      7.000000    5.000000    9.000000
-75%     20.500000   14.500000   28.000000
-max    174.000000  807.000000  254.000000
+       Hombres  Mujeres  Total
+count       95       74     98
+mean        19       22     26
+std         31       94     44
+min          1        1      1
+25%          2        2      3
+50%          7        5      9
+75%         20       14     28
+max        174      807    254
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Nacionalidad      0
@@ -10818,26 +11080,26 @@ dtype: int64
 
 SolicitantesProtección InternacionalPorCCAA
       Comunidad Autónoma  Solicitantes
-0              Andalucía       215.000
-1                 Aragón         5.000
-2               Asturias         9.000
-3              Cantabria        19.000
-4     Castilla La Mancha        11.000
-5        Castilla y León        15.000
-6               Cataluña       206.000
-7                 Ceuta        184.000
-8    Comunidad de Madrid         1.280
-9    Comunidad de Murcia        13.000
-10  Comunidad Valenciana       185.000
-11           Extremadura         2.000
-12               Galicia        10.000
-13        Islas Baleares        12.000
-14        Islas Canarias        39.000
-15              La Rioja         1.000
-16               Melilla        33.000
-17               Navarra         5.000
-18            País Vasco        78.000
-19                Total          2.322
+0              Andalucía           215
+1                 Aragón             5
+2               Asturias             9
+3              Cantabria            19
+4     Castilla La Mancha            11
+5        Castilla y León            15
+6               Cataluña           206
+7                 Ceuta            184
+8    Comunidad de Madrid             1
+9    Comunidad de Murcia            13
+10  Comunidad Valenciana           185
+11           Extremadura             2
+12               Galicia            10
+13        Islas Baleares            12
+14        Islas Canarias            39
+15              La Rioja             1
+16               Melilla            33
+17               Navarra             5
+18            País Vasco            78
+19                Total              2
 20                   NaN           NaN
 21                   NaN           NaN
 22                   NaN           NaN
@@ -10850,14 +11112,14 @@ freq                    1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Solicitantes
-count     20.000000
-mean      52.280100
-std       76.789135
-min        1.000000
-25%        5.000000
-50%       12.500000
-75%       48.750000
-max      215.000000
+count            20
+mean             52
+std              77
+min               1
+25%               5
+50%              12
+75%              49
+max             215
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Comunidad Autónoma    3
@@ -10902,7 +11164,7 @@ freq               1                   17                48       81     52
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Unnamed: 5
-count         0.0
+count           0
 mean          NaN
 std           NaN
 min           NaN
@@ -10923,47 +11185,47 @@ dtype: int64
 
 SolicitantesProtección InternacionalPorProvincia
      Provincia   Solicitantes
-0      A CORUÑA         7.000
-1      ALBACETE         8.000
-2      ALICANTE        33.000
-3       ALMERIA         4.000
-4         ARABA         8.000
-5      ASTURIAS         9.000
-6      BALEARES        12.000
-7     BARCELONA       200.000
-8       BIZKAIA        62.000
-9        BURGOS         6.000
-10      CACERES         2.000
-11        CADIZ        51.000
-12    CANTABRIA        19.000
-13    CASTELLON         1.000
-14        CEUTA       184.000
-15      CORDOBA        26.000
-16       GERONA         3.000
-17     GIPUZKOA         8.000
-18      GRANADA        15.000
-19  GUADALAJARA         3.000
-20       HUELVA         1.000
-21     LA RIOJA         1.000
-22   LAS PALMAS        33.000
-23         LEON         3.000
-24         LUGO         1.000
-25       MADRID         1.280
-26       MALAGA        58.000
-27      MELILLA        33.000
-28       MURCIA        13.000
-29      NAVARRA         5.000
-30     PALENCIA         2.000
-31   PONTEVEDRA         2.000
-32    SALAMANCA         1.000
-33      SEGOVIA         1.000
-34      SEVILLA        60.000
-35        SORIA         2.000
-36    TARRAGONA         3.000
-37     TENERIFE         6.000
-38     VALENCIA       151.000
-39     ZARAGOZA         5.000
-40       Total          2.322
+0      A CORUÑA             7
+1      ALBACETE             8
+2      ALICANTE            33
+3       ALMERIA             4
+4         ARABA             8
+5      ASTURIAS             9
+6      BALEARES            12
+7     BARCELONA           200
+8       BIZKAIA            62
+9        BURGOS             6
+10      CACERES             2
+11        CADIZ            51
+12    CANTABRIA            19
+13    CASTELLON             1
+14        CEUTA           184
+15      CORDOBA            26
+16       GERONA             3
+17     GIPUZKOA             8
+18      GRANADA            15
+19  GUADALAJARA             3
+20       HUELVA             1
+21     LA RIOJA             1
+22   LAS PALMAS            33
+23         LEON             3
+24         LUGO             1
+25       MADRID             1
+26       MALAGA            58
+27      MELILLA            33
+28       MURCIA            13
+29      NAVARRA             5
+30     PALENCIA             2
+31   PONTEVEDRA             2
+32    SALAMANCA             1
+33      SEGOVIA             1
+34      SEVILLA            60
+35        SORIA             2
+36    TARRAGONA             3
+37     TENERIFE             6
+38     VALENCIA           151
+39     ZARAGOZA             5
+40       Total              2
 Datos de tipo object: 
        Provincia 
 count          41
@@ -10973,14 +11235,14 @@ freq            1
 -----------------------------------------------------------------------------------------
 Datos de tipo float64: 
        Solicitantes
-count     41.000000
-mean      25.502488
-std       47.108274
-min        1.000000
-25%        2.000000
-50%        6.000000
-75%       26.000000
-max      200.000000
+count            41
+mean             26
+std              47
+min               1
+25%               2
+50%               6
+75%              26
+max             200
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
 Provincia       0
@@ -11576,15 +11838,15 @@ TABLA 2-5
 0         NaN            NaN        NaN        NaN        NaN        NaN   
 1     % Incr.  P. Fronterizo    % Incr.   Embajada    % Incr.     C.I.E.   
 2           –           2644          –       1724          –          –   
-3       -6.01           1070     -59.53        349     -79.76          –   
-4      -20.56            454     -57.57         92     -73.64          –   
-5      -12.39            300     -33.92         74     -19.57        214   
-6       25.09            344      14.67        120      62.16        261   
-7      -31.74            401      16.57        186         55        160   
-8       96.36            381      -4.99        211      13.44        306   
-9        10.1           1039      172.7        346      63.98        587   
-10      73.69           6862     560.44        327      -5.49        785   
-11       79.7           3088        -55        264     -19.27        769   
+3          -6           1070        -60        349        -80          –   
+4         -21            454        -58         92        -74          –   
+5         -12            300        -34         74        -20        214   
+6          25            344         15        120         62        261   
+7         -32            401         17        186         55        160   
+8          96            381         -5        211         13        306   
+9          10           1039        173        346         64        587   
+10         74           6862        560        327         -5        785   
+11         80           3088        -55        264        -19        769   
 12          –          16583          –       3693          –       3082   
 
    Unnamed: 8 Unnamed: 9  
@@ -11595,11 +11857,11 @@ TABLA 2-5
 4           –       3007  
 5           –       2744  
 6           –       3422  
-7       -38.7       2588  
-8       91.25       4513  
-9       91.83       5952  
-10      33.73      14887  
-11      -2.04      16544  
+7         -39       2588  
+8          91       4513  
+9          92       5952  
+10         34      14887  
+11         -2      16544  
 12          –      65838  
 Datos de tipo object: 
        TABLA 2-5.  \
@@ -11658,15 +11920,15 @@ TABLA 2-6
       Unnamed: 1 Unnamed: 2  
 0   Solicitantes    % Incr.  
 1           7664          –  
-2           4517     -41.06  
-3           3007     -33.43  
-4           2744      -8.75  
-5           3422      24.71  
-6           2588     -24.37  
-7           4513      74.38  
-8           5952      31.89  
-9          14887     150.12  
-10         16544      11.13  
+2           4517        -41  
+3           3007        -33  
+4           2744         -9  
+5           3422         25  
+6           2588        -24  
+7           4513         74  
+8           5952         32  
+9          14887        150  
+10         16544         11  
 11         65838          –  
 Datos de tipo object: 
        TABLA 2-6. EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL 2007-2016  \
@@ -11864,7 +12126,7 @@ dtype: int64
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">asilos2017</span> <span class="o">=</span> <span class="n">leer_fichero</span><span class="p">(</span><span class="n">carpeta17</span><span class="p">,</span> <span class="s1">'Asilo2016'</span><span class="p">,</span> <span class="s1">'.xlsx'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">asilos2017</span> <span class="o">=</span> <span class="n">leer_fichero</span><span class="p">(</span><span class="n">carpeta17</span><span class="p">,</span> <span class="s1">'Asilo2017'</span><span class="p">,</span> <span class="s1">'.xlsx'</span><span class="p">)</span>
 <span class="n">mostrar_datos_carpeta</span><span class="p">(</span><span class="n">asilos2017</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -11877,544 +12139,636 @@ dtype: int64
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>TABLA 2-1
-    TABLA 2-1. SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR PAÍS DE ORIGEN Y SEXO  \
-0                                       País de origen                              
-1                                           Afganistán                              
-2                                              Albania                              
-3                                             Alemania                              
-4                                               Angola                              
+         TABLA 2-1.  \
+0    País de origen   
+1        Afganistán   
+2           Albania   
+3            Angola   
+4          Apátrida   
+..              ...   
+109       Venezuela   
+110         Vietnam   
+111           Yemen   
+112          Zambia   
+113           Total   
+
+    SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PAÍS DE ORIGEN Y SEXO  \
+0                                              Hombres                              
+1                                                  100                              
+2                                                   42                              
+3                                                    9                              
+4                                                    1                              
 ..                                                 ...                              
-100                                          Venezuela                              
-101                                            Vietnam                              
-102                                              Yemen                              
-103                                           Zimbabwe                              
-104                                              Total                              
+109                                               5151                              
+110                                                 32                              
+111                                                132                              
+112                                                  0                              
+113                                              18271                              
 
-    Unnamed: 1 Unnamed: 2 Unnamed: 3  
-0      Hombres    Mujeres      Total  
-1           49         20         69  
-2           24          2         26  
-3           –           1          1  
-4           10          6         16  
-..         ...        ...        ...  
-100       2122       2074       4196  
-101          2          3          5  
-102         38         10         48  
-103         –           2          2  
-104       9826       6718      16544  
+    Unnamed: 2 Unnamed: 3  
+0      Mujeres      Total  
+1           24        124  
+2           14         56  
+3           11         20  
+4            2          3  
+..         ...        ...  
+109       5478      10629  
+110         14         46  
+111         42        174  
+112          1          1  
+113      13469      31740  
 
-[105 rows x 4 columns]
+[114 rows x 4 columns]
 Datos de tipo object: 
-       TABLA 2-1. SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR PAÍS DE ORIGEN Y SEXO  \
-count                                                 105                              
-unique                                                105                              
-top                                        País de origen                              
-freq                                                    1                              
+            TABLA 2-1.  \
+count              114   
+unique             114   
+top     País de origen   
+freq                 1   
 
-        Unnamed: 1 Unnamed: 2  Unnamed: 3  
-count          105        105         105  
-unique          55         42          60  
-top              1         –            1  
-freq            12         23          13  
+        SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PAÍS DE ORIGEN Y SEXO  \
+count                                                 114                               
+unique                                                 61                               
+top                                                     1                               
+freq                                                   12                               
+
+        Unnamed: 2  Unnamed: 3  
+count          114         114  
+unique          49          66  
+top              1           1  
+freq            17          12  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-1. SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR PAÍS DE ORIGEN Y SEXO    0
-Unnamed: 1                                                                       0
+TABLA 2-1.                                                                       0
+SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PAÍS DE ORIGEN Y SEXO    0
 Unnamed: 2                                                                       0
 Unnamed: 3                                                                       0
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-10
-   TABLA 2-10. PETICIONES RECIBIDAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN  \
-0                                                País                     
-1                                            Alemania                     
-2                                             Austria                     
-3                                             Bélgica                     
-4                                            Bulgaria                     
-5                                              Chipre                     
-6                                             Croacia                     
-7                                           Dinamarca                     
-8                                          Eslovaquia                     
-9                                           Eslovenia                     
-10                                            Estonia                     
-11                                          Finlandia                     
-12                                            Francia                     
-13                                             Grecia                     
-14                                            Hungría                     
-15                                            Irlanda                     
-16                                           Islandia                     
-17                                             Italia                     
-18                                            Letonia                     
-19                                      Liechtenstein                     
-20                                           Lituania                     
-21                                         Luxemburgo                     
-22                                              Malta                     
-23                                            Noruega                     
-24                                       Países Bajos                     
-25                                            Polonia                     
-26                                           Portugal                     
-27                                        Reino Unido                     
-28                                    República Checa                     
-29                                            Rumanía                     
-30                                             Suecia                     
-31                                              Suiza                     
-32                                             Total                      
-
-    Unnamed: 1  
-0   Tramitadas  
-1         1687  
-2          185  
-3          614  
-4           –   
-5           –   
-6            1  
-7          118  
-8            1  
-9            4  
-10          –   
-11          40  
-12        1379  
-13         455  
-14           4  
-15          13  
-16          27  
-17         144  
-18          –   
-19           4  
-20          –   
-21          29  
-22           6  
-23          83  
-24         168  
-25           5  
-26          12  
-27          25  
-28          10  
-29           3  
-30         362  
-31         472  
-32        5851  
+        TABLA 2-10. PETICIONES RECIBIDAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN
+0              País                                         Peticiones      
+1          Alemania                                               2196      
+2           Austria                                                147      
+3           Bélgica                                                585      
+4          Bulgaria                                                  1      
+5            Chipre                                                  5      
+6           Croacia                                                  1      
+7         Dinamarca                                                 58      
+8        Eslovaquia                                                  2      
+9         Eslovenia                                                  1      
+10          Estonia                                                  1      
+11        Finlandia                                                 25      
+12          Francia                                               1780      
+13           Grecia                                                311      
+14          Irlanda                                                 24      
+15         Islandia                                                 12      
+16           Italia                                                156      
+17    Liechtenstein                                                  1      
+18       Luxemburgo                                                 26      
+19            Malta                                                  6      
+20          Noruega                                                 42      
+21     Países Bajos                                                264      
+22          Polonia                                                  4      
+23         Portugal                                                  9      
+24      Reino Unido                                                 65      
+25  República Checa                                                  9      
+26           Suecia                                                229      
+27            Suiza                                                368      
+28            Total                                               6328      
 Datos de tipo object: 
-       TABLA 2-10. PETICIONES RECIBIDAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN  \
-count                                                  33                     
-unique                                                 33                     
-top                                                  País                     
-freq                                                    1                     
-
-       Unnamed: 1  
-count          33  
-unique         26  
-top            –   
-freq            5  
+       TABLA 2-10.  PETICIONES RECIBIDAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN
+count           29                                                 29       
+unique          29                                                 24       
+top           País                                                  1       
+freq             1                                                  5       
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-10. PETICIONES RECIBIDAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN    0
-Unnamed: 1                                                              0
+TABLA 2-10.                                                 0
+PETICIONES RECIBIDAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN    0
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-11
-   TABLA 2-11. PETICIONES ENVIADAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN  \
-0                                                País                    
-1                                            Alemania                    
-2                                             Austria                    
-3                                             Bélgica                    
-4                                            Bulgaria                    
-5                                              Chipre                    
-6                                             Croacia                    
-7                                           Dinamarca                    
-8                                          Eslovaquia                    
-9                                           Eslovenia                    
-10                                            Estonia                    
-11                                          Finlandia                    
-12                                            Francia                    
-13                                             Grecia                    
-14                                            Hungría                    
-15                                            Irlanda                    
-16                                           Islandia                    
-17                                             Italia                    
-18                                            Letonia                    
-19                                      Liechtenstein                    
-20                                           Lituania                    
-21                                         Luxemburgo                    
-22                                              Malta                    
-23                                            Noruega                    
-24                                       Países Bajos                    
-25                                            Polonia                    
-26                                           Portugal                    
-27                                        Reino Unido                    
-28                                    República Checa                    
-29                                            Rumanía                    
-30                                             Suecia                    
-31                                              Suiza                    
-32                                             Total                     
-
-    Unnamed: 1  
-0   Tramitadas  
-1            4  
-2           –   
-3           –   
-4           –   
-5           –   
-6           –   
-7            1  
-8           –   
-9           –   
-10          –   
-11          –   
-12           2  
-13          –   
-14          –   
-15          –   
-16          –   
-17           1  
-18          –   
-19          –   
-20          –   
-21          –   
-22          –   
-23          –   
-24          –   
-25          –   
-26          –   
-27          –   
-28          –   
-29          –   
-30           2  
-31          –   
-32          10  
+        TABLA 2-11. PETICIONES ENVIADAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN
+0              País                                         Peticiones     
+1          Alemania                                                  3     
+2           Austria                                                  0     
+3           Bélgica                                                  0     
+4          Bulgaria                                                  0     
+5            Chipre                                                  0     
+6           Croacia                                                  0     
+7         Dinamarca                                                  1     
+8        Eslovaquia                                                  0     
+9         Eslovenia                                                  0     
+10          Estonia                                                  0     
+11        Finlandia                                                  0     
+12          Francia                                                  4     
+13           Grecia                                                  0     
+14          Hungría                                                  0     
+15          Irlanda                                                  0     
+16         Islandia                                                  0     
+17           Italia                                                  1     
+18          Letonia                                                  0     
+19    Liechtenstein                                                  0     
+20         Lituania                                                  0     
+21       Luxemburgo                                                  0     
+22            Malta                                                  0     
+23          Noruega                                                  0     
+24     Países Bajos                                                  2     
+25          Polonia                                                  0     
+26         Portugal                                                  0     
+27      Reino Unido                                                  0     
+28  República Checa                                                  0     
+29          Rumanía                                                  0     
+30           Suecia                                                  0     
+31            Suiza                                                  0     
+32            Total                                                 11     
 Datos de tipo object: 
-       TABLA 2-11. PETICIONES ENVIADAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN  \
-count                                                  33                    
-unique                                                 33                    
-top                                                  País                    
-freq                                                    1                    
-
-       Unnamed: 1  
-count          33  
-unique          6  
-top            –   
-freq           26  
+       TABLA 2-11.  PETICIONES ENVIADAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN
+count           33                                                 33      
+unique          33                                                  7      
+top           País                                                  0      
+freq             1                                                 26      
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-11. PETICIONES ENVIADAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN    0
-Unnamed: 1                                                             0
+TABLA 2-11.                                                0
+PETICIONES ENVIADAS EN APLICACIÓN DEL REGLAMENTO DUBLÍN    0
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-2
-    TABLA 2-2. SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR PAÍS DE ORIGEN Y LUGAR DE  \
-0                             PRESENTACIÓN DE LA PE...                                  
-1                                       País de origen                                  
-2                                           Afganistán                                  
-3                                              Albania                                  
-4                                             Alemania                                  
-..                                                 ...                                  
-101                                          Venezuela                                  
-102                                            Vietnam                                  
-103                                              Yemen                                  
-104                                           Zimbabwe                                  
-105                                              Total                                  
+         TABLA 2-2.  \
+0    País de origen   
+1               NaN   
+2        Afganistán   
+3           Albania   
+4            Angola   
+..              ...   
+110       Venezuela   
+111         Vietnam   
+112           Yemen   
+113          Zambia   
+114           Total   
 
-               Unnamed: 1         Unnamed: 2 Unnamed: 3 Unnamed: 4  
-0                     NaN                NaN        NaN        NaN  
-1    Territorio nacional   Puesto fronterizo   Embajada     C.I.E.  
-2                      47                  3         16          3  
-3                      15                  4         –           7  
-4                       1                 –          –          –   
-..                    ...                ...        ...        ...  
-101                  4051                140         –           5  
-102                     1                  2          2         –   
-103                     4                 44         –          –   
-104                     2                 –          –          –   
-105                 12423               3088        264        769  
+    SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PAÍS DE ORIGEN, LUGAR DE PRESENTACIÓN DE LA PETICIÓN Y SEXO  \
+0                                  Territorio nacional                                                                    
+1                                                    H                                                                    
+2                                                   87                                                                    
+3                                                   32                                                                    
+4                                                    4                                                                    
+..                                                 ...                                                                    
+110                                               5070                                                                    
+111                                                  0                                                                    
+112                                                  7                                                                    
+113                                                  0                                                                    
+114                                              13093                                                                    
 
-[106 rows x 5 columns]
+    Unnamed: 2         Unnamed: 3 Unnamed: 4 Unnamed: 5 Unnamed: 6 Unnamed: 7  \
+0          NaN  Puesto fronterizo        NaN   Embajada        NaN     C.I.E.   
+1            M                  H          M          H          M          H   
+2           12                  6          4          7          8          0   
+3           14                  0          0          0          0         10   
+4            8                  4          3          0          0          1   
+..         ...                ...        ...        ...        ...        ...   
+110       5410                 76         67          0          0          5   
+111          0                 32         14          0          0          0   
+112          2                124         37          1          3          0   
+113          1                  0          0          0          0          0   
+114      10779               3712       2436        146        195       1320   
+
+    Unnamed: 8  
+0          NaN  
+1            M  
+2            0  
+3            0  
+4            0  
+..         ...  
+110          1  
+111          0  
+112          0  
+113          0  
+114         59  
+
+[115 rows x 9 columns]
 Datos de tipo object: 
-       TABLA 2-2. SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR PAÍS DE ORIGEN Y LUGAR DE  \
-count                                                 106                                  
-unique                                                106                                  
-top                              PRESENTACIÓN DE LA PE...                                  
-freq                                                    1                                  
+            TABLA 2-2.  \
+count              114   
+unique             114   
+top     País de origen   
+freq                 1   
 
-        Unnamed: 1 Unnamed: 2 Unnamed: 3 Unnamed: 4  
-count          105        105        105        105  
-unique          53         32         13         21  
-top              1         –          –          –   
-freq            16         39         86         48  
+        SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PAÍS DE ORIGEN, LUGAR DE PRESENTACIÓN DE LA PETICIÓN Y SEXO  \
+count                                                 115                                                                     
+unique                                                 52                                                                     
+top                                                     1                                                                     
+freq                                                   14                                                                     
+
+        Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  \
+count          114         115         114         115         114   
+unique          37          37          29          13          14   
+top              0           0           0           0           0   
+freq            25          46          58          98          95   
+
+        Unnamed: 7  Unnamed: 8  
+count          115         114  
+unique          19           9  
+top              0           0  
+freq            59          94  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-2. SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR PAÍS DE ORIGEN Y LUGAR DE    0
-Unnamed: 1                                                                           1
-Unnamed: 2                                                                           1
-Unnamed: 3                                                                           1
-Unnamed: 4                                                                           1
+TABLA 2-2.                                                                                                             1
+SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PAÍS DE ORIGEN, LUGAR DE PRESENTACIÓN DE LA PETICIÓN Y SEXO    0
+Unnamed: 2                                                                                                             1
+Unnamed: 3                                                                                                             0
+Unnamed: 4                                                                                                             1
+Unnamed: 5                                                                                                             0
+Unnamed: 6                                                                                                             1
+Unnamed: 7                                                                                                             0
+Unnamed: 8                                                                                                             1
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-3
-   TABLA 2-3. SOLICITANTES DE PROTECCIÓN INTERNACIONAL EN CADA COMUNIDAD AUTÓNOMA  \
-0                                  Comunidad autónoma                               
-1                                           Andalucía                               
-2                                              Aragón                               
-3                                            Asturias                               
-4                                      Balears, Illes                               
-5                                            Canarias                               
-6                                           Cantabria                               
-7                                     Castilla y León                               
-8                                  Castilla-La Mancha                               
-9                                            Cataluña                               
-10                                             Ceuta                                
-11                               Comunitat Valenciana                               
-12                                        Extremadura                               
-13                                            Galicia                               
-14                               Madrid, Comunidad de                               
-15                                            Melilla                               
-16                                  Murcia, Región de                               
-17                                            Navarra                               
-18                                         País Vasco                               
-19                                          Rioja, La                               
-20                                             Total                                
-21  Nota: No se contabilizan las solicitudes en em...                               
+                                           TABLA 2-3.  \
+0                                  Comunidad autónoma   
+1                                           Andalucía   
+2                                              Aragón   
+3                             Asturias, Principado de   
+4                                      Balears, Illes   
+5                                            Canarias   
+6                                           Cantabria   
+7                                     Castilla y León   
+8                                  Castilla-La Mancha   
+9                                            Cataluña   
+10                               Comunitat Valenciana   
+11                                        Extremadura   
+12                                            Galicia   
+13                               Madrid, Comunidad de   
+14                                  Murcia, Región de   
+15                        Navarra, Comunidad Foral de   
+16                                         País Vasco   
+17                                          Rioja, La   
+18                                              Ceuta   
+19                                            Melilla   
+20                                              Total   
+21  Nota: No se contabilizan las solicitudes en em...   
 
-      Unnamed: 1  
-0   Solicitantes  
-1           1784  
-2            138  
-3             66  
-4            127  
-5            433  
-6            127  
-7            290  
-8            219  
-9           1834  
-10           221  
-11          1367  
-12            35  
-13           194  
-14          5240  
-15          2456  
-16           565  
-17            79  
-18           500  
-19            22  
-20         15697  
-21           NaN  
+   SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR COMUNIDAD AUTÓNOMA Y SEXO  \
+0                                             Hombres                                  
+1                                                1965                                  
+2                                                 211                                  
+3                                                 185                                  
+4                                                 126                                  
+5                                                 443                                  
+6                                                  91                                  
+7                                                 409                                  
+8                                                 198                                  
+9                                                2338                                  
+10                                               1320                                  
+11                                                 72                                  
+12                                                329                                  
+13                                               6477                                  
+14                                                648                                  
+15                                                 82                                  
+16                                                516                                  
+17                                                 32                                  
+18                                                193                                  
+19                                               1705                                  
+20                                              17340                                  
+21                                                NaN                                  
+
+   Unnamed: 2 Unnamed: 3  
+0     Mujeres      Total  
+1        1342       3307  
+2         138        349  
+3         170        355  
+4          81        207  
+5         446        889  
+6          73        164  
+7         357        766  
+8         159        357  
+9        1588       3926  
+10       1004       2324  
+11         54        126  
+12        363        692  
+13       4756      11233  
+14        323        971  
+15         93        175  
+16        454        970  
+17         33         65  
+18         13        206  
+19       1182       2887  
+20      12629      29969  
+21        NaN        NaN  
 Datos de tipo object: 
-       TABLA 2-3. SOLICITANTES DE PROTECCIÓN INTERNACIONAL EN CADA COMUNIDAD AUTÓNOMA  \
-count                                                  22                               
-unique                                                 22                               
-top                                    Comunidad autónoma                               
-freq                                                    1                               
+                TABLA 2-3.  \
+count                   22   
+unique                  22   
+top     Comunidad autónoma   
+freq                     1   
 
-        Unnamed: 1  
-count           21  
-unique          20  
-top            127  
-freq             2  
+       SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR COMUNIDAD AUTÓNOMA Y SEXO  \
+count                                                  21                                  
+unique                                                 21                                  
+top                                               Hombres                                  
+freq                                                    1                                  
+
+       Unnamed: 2 Unnamed: 3  
+count          21         21  
+unique         21         21  
+top       Mujeres      Total  
+freq            1          1  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-3. SOLICITANTES DE PROTECCIÓN INTERNACIONAL EN CADA COMUNIDAD AUTÓNOMA    0
-Unnamed: 1                                                                        1
+TABLA 2-3.                                                                           0
+SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR COMUNIDAD AUTÓNOMA Y SEXO    1
+Unnamed: 2                                                                           1
+Unnamed: 3                                                                           1
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-4
-   TABLA 2-4. SOLICITANTES DE PROTECCIÓN INTERNACIONAL EN CADA PROVINCIA  \
-0                                          Provincia                       
-1                                           Coruña, A                      
-2                                            Albacete                      
-3                                    Alicante/Alacant                      
-4                                             Almería                      
-5                                         Araba/Álava                      
-6                                            Asturias                      
-7                                               Ávila                      
-8                                             Badajoz                      
-9                                      Balears, Illes                      
-10                                          Barcelona                      
-11                                            Bizkaia                      
-12                                             Burgos                      
-13                                            Cáceres                      
-14                                              Cádiz                      
-15                                          Cantabria                      
-16                                 Castellón/Castelló                      
-17                                              Ceuta                      
-18                                        Ciudad Real                      
-19                                            Córdoba                      
-20                                             Cuenca                      
-21                                           Gipuzkoa                      
-22                                             Girona                      
-23                                            Granada                      
-24                                        Guadalajara                      
-25                                             Huelva                      
-26                                             Huesca                      
-27                                               Jaén                      
-28                                          Rioja, La                      
-29                                        Palmas, Las                      
-30                                               León                      
-31                                             Lleida                      
-32                                               Lugo                      
-33                                             Madrid                      
-34                                             Málaga                      
-35                                            Melilla                      
-36                                             Murcia                      
-37                                            Navarra                      
-38                                            Ourense                      
-39                                           Palencia                      
-40                                         Pontevedra                      
-41                                          Salamanca                      
-42                                            Segovia                      
-43                                            Sevilla                      
-44                                              Soria                      
-45                                          Tarragona                      
-46                             Santa Cruz de Tenerife                      
-47                                             Teruel                      
-48                                             Toledo                      
-49                                  Valencia/València                      
-50                                         Valladolid                      
-51                                             Zamora                      
-52                                           Zaragoza                      
-53                                             Total                       
-54  Nota: No se contabilizan las solicitudes en em...                      
+                                           TABLA 2-4.  \
+0                                           Provincia   
+1                                            Albacete   
+2                                    Alicante/Alacant   
+3                                             Almería   
+4                                         Araba/Álava   
+5                                            Asturias   
+6                                               Ávila   
+7                                             Badajoz   
+8                                      Balears, Illes   
+9                                           Barcelona   
+10                                            Bizkaia   
+11                                             Burgos   
+12                                            Cáceres   
+13                                              Cádiz   
+14                                          Cantabria   
+15                                 Castellón/Castelló   
+16                                              Ceuta   
+17                                        Ciudad Real   
+18                                            Córdoba   
+19                                          Coruña, A   
+20                                             Cuenca   
+21                                           Gipuzkoa   
+22                                             Girona   
+23                                            Granada   
+24                                        Guadalajara   
+25                                             Huelva   
+26                                             Huesca   
+27                                               Jaén   
+28                                               León   
+29                                             Lleida   
+30                                               Lugo   
+31                                             Madrid   
+32                                             Málaga   
+33                                            Melilla   
+34                                             Murcia   
+35                                            Navarra   
+36                                            Ourense   
+37                                           Palencia   
+38                                        Palmas, Las   
+39                                         Pontevedra   
+40                                          Rioja, La   
+41                                          Salamanca   
+42                             Santa Cruz de Tenerife   
+43                                            Segovia   
+44                                            Sevilla   
+45                                              Soria   
+46                                          Tarragona   
+47                                             Teruel   
+48                                             Toledo   
+49                                  Valencia/València   
+50                                         Valladolid   
+51                                             Zamora   
+52                                           Zaragoza   
+53                                              Total   
+54  Nota: No se contabilizan las solicitudes en em...   
 
-      Unnamed: 1  
-0   Solicitantes  
-1             63  
-2             65  
-3            280  
-4            134  
-5            116  
-6             66  
-7              4  
-8              4  
-9            127  
-10          1650  
-11           285  
-12            56  
-13            31  
-14           167  
-15           127  
-16            74  
-17           221  
-18            54  
-19           126  
-20             6  
-21            99  
-22            97  
-23            74  
-24            47  
-25            44  
-26            26  
-27             4  
-28            22  
-29           326  
-30            32  
-31            40  
-32            38  
-33          5240  
-34           872  
-35          2456  
-36           565  
-37            79  
-38            11  
-39            17  
-40            82  
-41            41  
-42            41  
-43           363  
-44            32  
-45            47  
-46           107  
-47            13  
-48            47  
-49          1013  
-50            57  
-51            10  
-52            99  
-53         15697  
-54           NaN  
+   SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PROVINCIA Y SEXO  \
+0                                             Hombres                         
+1                                                  67                         
+2                                                 112                         
+3                                                 237                         
+4                                                 136                         
+5                                                 185                         
+6                                                  18                         
+7                                                  23                         
+8                                                 126                         
+9                                                2082                         
+10                                                304                         
+11                                                 54                         
+12                                                 49                         
+13                                                233                         
+14                                                 91                         
+15                                                102                         
+16                                                193                         
+17                                                 41                         
+18                                                164                         
+19                                                156                         
+20                                                  7                         
+21                                                 76                         
+22                                                137                         
+23                                                132                         
+24                                                 57                         
+25                                                 89                         
+26                                                 63                         
+27                                                 17                         
+28                                                 59                         
+29                                                 65                         
+30                                                 63                         
+31                                               6477                         
+32                                                725                         
+33                                               1705                         
+34                                                648                         
+35                                                 82                         
+36                                                 39                         
+37                                                 35                         
+38                                                286                         
+39                                                 71                         
+40                                                 32                         
+41                                                 58                         
+42                                                157                         
+43                                                 37                         
+44                                                368                         
+45                                                 47                         
+46                                                 54                         
+47                                                 31                         
+48                                                 26                         
+49                                               1106                         
+50                                                 93                         
+51                                                  8                         
+52                                                117                         
+53                                              17340                         
+54                                                NaN                         
+
+   Unnamed: 2 Unnamed: 3  
+0     Mujeres      Total  
+1          36        103  
+2         116        228  
+3         122        359  
+4         121        257  
+5         170        355  
+6          17         35  
+7          23         46  
+8          81        207  
+9        1371       3453  
+10        288        592  
+11         40         94  
+12         31         80  
+13         75        308  
+14         73        164  
+15         76        178  
+16         13        206  
+17         35         76  
+18         79        243  
+19        186        342  
+20         14         21  
+21         45        121  
+22        126        263  
+23         91        223  
+24         48        105  
+25         76        165  
+26         46        109  
+27         12         29  
+28         62        121  
+29         43        108  
+30         67        130  
+31       4756      11233  
+32        578       1303  
+33       1182       2887  
+34        323        971  
+35         93        175  
+36         43         82  
+37         14         49  
+38        266        552  
+39         67        138  
+40         33         65  
+41         52        110  
+42        180        337  
+43         31         68  
+44        309        677  
+45         50         97  
+46         48        102  
+47         12         43  
+48         26         52  
+49        812       1918  
+50         83        176  
+51          8         16  
+52         80        197  
+53      12629      29969  
+54        NaN        NaN  
 Datos de tipo object: 
-       TABLA 2-4. SOLICITANTES DE PROTECCIÓN INTERNACIONAL EN CADA PROVINCIA  \
-count                                                  55                      
-unique                                                 55                      
-top                                            Provincia                       
-freq                                                    1                      
+       TABLA 2-4.  \
+count          55   
+unique         55   
+top     Provincia   
+freq            1   
 
-        Unnamed: 1  
-count           54  
-unique          45  
-top             47  
-freq             3  
+        SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PROVINCIA Y SEXO  \
+count                                                  54                          
+unique                                                 52                          
+top                                                    63                          
+freq                                                    2                          
+
+        Unnamed: 2  Unnamed: 3  
+count           54          54  
+unique          47          53  
+top             31         121  
+freq             2           2  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-4. SOLICITANTES DE PROTECCIÓN INTERNACIONAL EN CADA PROVINCIA    0
-Unnamed: 1                                                               1
+TABLA 2-4.                                                                  0
+SOLICITUDES DE PROTECCIÓN INTERNACIONAL PRESENTADAS POR PROVINCIA Y SEXO    1
+Unnamed: 2                                                                  1
+Unnamed: 3                                                                  1
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-5
    TABLA 2-5.  \
-0         NaN   
-1         Año   
-2        2007   
-3        2008   
-4        2009   
-5        2010   
-6        2011   
-7        2012   
-8        2013   
-9        2014   
-10       2015   
-11       2016   
-12      Total   
+0         Año   
+1        2008   
+2        2009   
+3        2010   
+4        2011   
+5        2012   
+6        2013   
+7        2014   
+8        2015   
+9        2016   
+10       2017   
+11      Total   
 
-   EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR LUGAR DE ENTRADA  \
-0                                           2007-2016                               
-1                                         T. Nacional                               
-2                                                3296                               
-3                                                3098                               
-4                                                2461                               
-5                                                2156                               
-6                                                2697                               
-7                                                1841                               
-8                                                3615                               
-9                                                3980                               
-10                                               6913                               
-11                                              12423                               
-12                                              42480                               
+   EVOLUCIÓN DE LAS SOLICITUDES DE PROTECCIÓN INTERNACIONAL POR LUGAR DE ENTRADA 2008-2017  \
+0                                 Territorio nacional                                        
+1                                                3098                                        
+2                                                2461                                        
+3                                                2156                                        
+4                                                2697                                        
+5                                                1841                                        
+6                                                3615                                        
+7                                                3980                                        
+8                                                6913                                        
+9                                               12423                                        
+10                                              23872                                        
+11                                              63056                                        
 
-   Unnamed: 2     Unnamed: 3 Unnamed: 4 Unnamed: 5 Unnamed: 6 Unnamed: 7  \
-0         NaN            NaN        NaN        NaN        NaN        NaN   
-1     % Incr.  P. Fronterizo    % Incr.   Embajada    % Incr.     C.I.E.   
-2           –           2644          –       1724          –          –   
-3       -6.01           1070     -59.53        349     -79.76          –   
-4      -20.56            454     -57.57         92     -73.64          –   
-5      -12.39            300     -33.92         74     -19.57        214   
-6       25.09            344      14.67        120      62.16        261   
-7      -31.74            401      16.57        186         55        160   
-8       96.36            381      -4.99        211      13.44        306   
-9        10.1           1039      172.7        346      63.98        587   
-10      73.69           6862     560.44        327      -5.49        785   
-11       79.7           3088        -55        264     -19.27        769   
-12          –          16583          –       3693          –       3082   
+          Unnamed: 2         Unnamed: 3        Unnamed: 4 Unnamed: 5  \
+0   Porcentaje Incr.  Puesto fronterizo  Porcentaje Incr.   Embajada   
+1                NaN               1070               NaN        349   
+2                -21                454               -58         92   
+3                -12                300               -34         74   
+4                 25                344                15        120   
+5                -32                401                17        186   
+6                 96                381                -5        211   
+7                 10               1039               173        346   
+8                 74               6862               560        327   
+9                 80               3088               -55        264   
+10                92               6148                99        341   
+11               NaN              20087               NaN       2310   
 
-   Unnamed: 8 Unnamed: 9  
-0         NaN        NaN  
-1     % Incr.      Total  
-2           –       7664  
-3           –       4517  
-4           –       3007  
-5           –       2744  
-6           –       3422  
-7       -38.7       2588  
-8       91.25       4513  
-9       91.83       5952  
-10      33.73      14887  
-11      -2.04      16544  
-12          –      65838  
+          Unnamed: 6 Unnamed: 7        Unnamed: 8 Unnamed: 9  
+0   Porcentaje Incr.     C.I.E.  Porcentaje Incr.      Total  
+1                NaN          0               NaN       4517  
+2            -73,64           0               NaN       3007  
+3                -20        214               NaN       2744  
+4                 62        261                22       3422  
+5                 55        160               -39       2588  
+6                 13        306                91       4513  
+7                 64        587                92       5952  
+8                 -5        785                34      14887  
+9                -19        769                -2      16544  
+10                29       1379                79      31740  
+11               NaN       4461               NaN      89914  
 Datos de tipo object: 
        TABLA 2-5.  \
 count          12   
@@ -12422,249 +12776,341 @@ unique         12
 top           Año   
 freq            1   
 
-       EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR LUGAR DE ENTRADA  \
-count                                                  13                               
-unique                                                 13                               
-top                                             2007-2016                               
-freq                                                    1                               
+       EVOLUCIÓN DE LAS SOLICITUDES DE PROTECCIÓN INTERNACIONAL POR LUGAR DE ENTRADA 2008-2017  \
+count                                                  12                                        
+unique                                                 12                                        
+top                                   Territorio nacional                                        
+freq                                                    1                                        
 
-       Unnamed: 2     Unnamed: 3 Unnamed: 4 Unnamed: 5 Unnamed: 6 Unnamed: 7  \
-count          12             12         12         12         12         12   
-unique         11             12         11         12         11         10   
-top             –  P. Fronterizo          –   Embajada          –          –   
-freq            2              1          2          1          2          3   
+              Unnamed: 2         Unnamed: 3        Unnamed: 4 Unnamed: 5  \
+count                 10                 12                10         12   
+unique                10                 12                10         12   
+top     Porcentaje Incr.  Puesto fronterizo  Porcentaje Incr.   Embajada   
+freq                   1                  1                 1          1   
 
-       Unnamed: 8 Unnamed: 9  
-count          12         12  
-unique          7         12  
-top             –      Total  
-freq            6          1  
+              Unnamed: 6  Unnamed: 7        Unnamed: 8 Unnamed: 9  
+count                 10          12                 8         12  
+unique                10          11                 8         12  
+top     Porcentaje Incr.           0  Porcentaje Incr.      Total  
+freq                   1           2                 1          1  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-5.                                                                        1
-EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL POR LUGAR DE ENTRADA    0
-Unnamed: 2                                                                        1
-Unnamed: 3                                                                        1
-Unnamed: 4                                                                        1
-Unnamed: 5                                                                        1
-Unnamed: 6                                                                        1
-Unnamed: 7                                                                        1
-Unnamed: 8                                                                        1
-Unnamed: 9                                                                        1
+TABLA 2-5.                                                                                 0
+EVOLUCIÓN DE LAS SOLICITUDES DE PROTECCIÓN INTERNACIONAL POR LUGAR DE ENTRADA 2008-2017    0
+Unnamed: 2                                                                                 2
+Unnamed: 3                                                                                 0
+Unnamed: 4                                                                                 2
+Unnamed: 5                                                                                 0
+Unnamed: 6                                                                                 2
+Unnamed: 7                                                                                 0
+Unnamed: 8                                                                                 4
+Unnamed: 9                                                                                 0
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-6
-   TABLA 2-6. EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL 2007-2016  \
-0                                                 Año                               
-1                                                2007                               
-2                                                2008                               
-3                                                2009                               
-4                                                2010                               
-5                                                2011                               
-6                                                2012                               
-7                                                2013                               
-8                                                2014                               
-9                                                2015                               
-10                                               2016                               
-11                                              Total                               
+   TABLA 2-6.  \
+0         Año   
+1        2008   
+2        2009   
+3        2010   
+4        2011   
+5        2012   
+6        2013   
+7        2014   
+8        2015   
+9        2016   
+10       2017   
+11      Total   
 
-      Unnamed: 1 Unnamed: 2  
-0   Solicitantes    % Incr.  
-1           7664          –  
-2           4517     -41.06  
-3           3007     -33.43  
-4           2744      -8.75  
-5           3422      24.71  
-6           2588     -24.37  
-7           4513      74.38  
-8           5952      31.89  
-9          14887     150.12  
-10         16544      11.13  
-11         65838          –  
+   EVOLUCIÓN DE LAS SOLICITUDES DE PROTECCIÓN INTERNACIONAL 2008-2017  \
+0                                         Solicitudes                   
+1                                                4517                   
+2                                                3007                   
+3                                                2744                   
+4                                                3422                   
+5                                                2588                   
+6                                                4513                   
+7                                                5952                   
+8                                               14887                   
+9                                               16544                   
+10                                              31740                   
+11                                              89914                   
+
+               Unnamed: 2  
+0   Porcentaje Incremento  
+1                     NaN  
+2                     -33  
+3                      -9  
+4                      25  
+5                     -24  
+6                      74  
+7                      32  
+8                     150  
+9                      11  
+10                     92  
+11                    NaN  
 Datos de tipo object: 
-       TABLA 2-6. EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL 2007-2016  \
-count                                                  12                               
-unique                                                 12                               
-top                                                   Año                               
-freq                                                    1                               
+       TABLA 2-6.  \
+count          12   
+unique         12   
+top           Año   
+freq            1   
 
-          Unnamed: 1 Unnamed: 2  
-count             12         12  
-unique            12         11  
-top     Solicitantes          –  
-freq               1          2  
+       EVOLUCIÓN DE LAS SOLICITUDES DE PROTECCIÓN INTERNACIONAL 2008-2017  \
+count                                                  12                   
+unique                                                 12                   
+top                                           Solicitudes                   
+freq                                                    1                   
+
+                   Unnamed: 2  
+count                      10  
+unique                     10  
+top     Porcentaje Incremento  
+freq                        1  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-6. EVOLUCIÓN DE LOS SOLICITANTES DE PROTECCIÓN INTERNACIONAL 2007-2016    0
-Unnamed: 1                                                                        0
-Unnamed: 2                                                                        0
+TABLA 2-6.                                                            0
+EVOLUCIÓN DE LAS SOLICITUDES DE PROTECCIÓN INTERNACIONAL 2008-2017    0
+Unnamed: 2                                                            2
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-7
-    TABLA 2-7. RESOLUCIONES SOBRE SOLICITUDES DE PROTECCIÓN INTERNACIONAL ADMITIDAS,  \
-0                             NO ADMITIDAS Y DENEGADAS                                 
-1                                       País de origen                                 
-2                                           Afganistán                                 
-3                                              Albania                                 
-4                                             Alemania                                 
-..                                                 ...                                 
-101                                          Venezuela                                 
-102                                            Vietnam                                 
-103                                              Yemen                                 
-104                                           Zimbabwe                                 
-105                                              Total                                 
+   TABLA 2-7.  \
+0         Año   
+1        2008   
+2        2009   
+3        2010   
+4        2011   
+5        2012   
+6        2013   
+7        2014   
+8        2015   
+9        2016   
+10       2017   
+11      Total   
 
-    Unnamed: 1    Unnamed: 2 Unnamed: 3  
-0          NaN           NaN        NaN  
-1    Admitidas  No admitidas  Denegadas  
-2           69            –          –   
-3           14            –           9  
-4           –              1         –   
-..         ...           ...        ...  
-101       4077            –          38  
-102          5            –          –   
-103         46            –          –   
-104          2            –          –   
-105      15245            40        941  
+   EVOLUCIÓN DE LAS SOLICITUDES DEL ESTATUTO DE APÁTRIDA POR SEXO 2008-2017  \
+0                                             Hombres                         
+1                                                 547                         
+2                                                  43                         
+3                                                 128                         
+4                                                  75                         
+5                                                 310                         
+6                                                 694                         
+7                                                 805                         
+8                                                 680                         
+9                                                 837                         
+10                                               1646                         
+11                                               5765                         
 
-[106 rows x 4 columns]
+   Unnamed: 2 Unnamed: 3             Unnamed: 4  
+0     Mujeres      Total  Porcentaje Incremento  
+1         273        820                    NaN  
+2           8         51                    -94  
+3          43        171                    235  
+4          14         89                    -48  
+5         168        478                    437  
+6         448       1142                    139  
+7         529       1334                     17  
+8         469       1149                    -14  
+9         566       1403                     22  
+10        779       2425                     73  
+11       3297       9062                    NaN  
 Datos de tipo object: 
-       TABLA 2-7. RESOLUCIONES SOBRE SOLICITUDES DE PROTECCIÓN INTERNACIONAL ADMITIDAS,  \
-count                                                 106                                 
-unique                                                106                                 
-top                              NO ADMITIDAS Y DENEGADAS                                 
-freq                                                    1                                 
+       TABLA 2-7.  \
+count          12   
+unique         12   
+top           Año   
+freq            1   
 
-        Unnamed: 1 Unnamed: 2 Unnamed: 3  
-count          105        105        105  
-unique          58          8         25  
-top              1         –          –   
-freq             9         87         39  
+       EVOLUCIÓN DE LAS SOLICITUDES DEL ESTATUTO DE APÁTRIDA POR SEXO 2008-2017  \
+count                                                  12                         
+unique                                                 12                         
+top                                               Hombres                         
+freq                                                    1                         
+
+       Unnamed: 2 Unnamed: 3             Unnamed: 4  
+count          12         12                     10  
+unique         12         12                     10  
+top       Mujeres      Total  Porcentaje Incremento  
+freq            1          1                      1  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-7. RESOLUCIONES SOBRE SOLICITUDES DE PROTECCIÓN INTERNACIONAL ADMITIDAS,    0
-Unnamed: 1                                                                          1
-Unnamed: 2                                                                          1
-Unnamed: 3                                                                          1
+TABLA 2-7.                                                                  0
+EVOLUCIÓN DE LAS SOLICITUDES DEL ESTATUTO DE APÁTRIDA POR SEXO 2008-2017    0
+Unnamed: 2                                                                  0
+Unnamed: 3                                                                  0
+Unnamed: 4                                                                  2
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-8
-   TABLA 2-8. RESOLUCIONES FIRMADAS A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y REFUGIO  \
-0                                      País de origen                                                
-1                                          Afganistán                                                
-2                                             Albania                                                
-3                                              Angola                                                
-4                                             Argelia                                                
-..                                                ...                                                
-72                                            Turquía                                                
-73                                            Ucrania                                                
-74                                          Venezuela                                                
-75                                              Yemen                                                
-76                                              Total                                                
+         TABLA 2-8.  \
+0    País de origen   
+1               NaN   
+2        Afganistán   
+3           Albania   
+4            Angola   
+..              ...   
+110       Venezuela   
+111         Vietnam   
+112           Yemen   
+113          Zambia   
+114           Total   
 
-           Unnamed: 1                          Unnamed: 2     Unnamed: 3  
-0   Estatuto de Asilo  Estatuto de Protección Subsidiaria  Desfavorables  
-1                  14                                  27              6  
-2                  –                                   –               1  
-3                  –                                   –               1  
-4                   7                                  –             401  
-..                ...                                 ...            ...  
-72                 –                                    1              1  
-73                 16                                  50            345  
-74                  4                                  –              –   
-75                  3                                   1             –   
-76                369                                6500           2398  
+    RESOLUCIONES SOBRE SOLICITUDES DE PROTECCIÓN INTERNACIONAL: ADMITIDAS, NO ADMITIDAS Y DENEGADAS  \
+0                                            Admitidas                                                
+1                                              Hombres                                                
+2                                                   95                                                
+3                                                   30                                                
+4                                                    7                                                
+..                                                 ...                                                
+110                                               5030                                                
+111                                                 20                                                
+112                                                131                                                
+113                                                  0                                                
+114                                              16411                                                
 
-[77 rows x 4 columns]
+    Unnamed: 2    Unnamed: 3 Unnamed: 4 Unnamed: 5 Unnamed: 6  
+0          NaN  No admitidas        NaN  Denegadas        NaN  
+1      Mujeres       Hombres    Mujeres    Hombres    Mujeres  
+2           24             0          0          0          0  
+3           14             0          0          8          0  
+4            8             0          0          2          3  
+..         ...           ...        ...        ...        ...  
+110       5329             1          0         15         14  
+111          5             0          0         12          9  
+112         42             0          0          1          0  
+113          1             0          0          0          0  
+114      12932            21          2       1343        189  
+
+[115 rows x 7 columns]
 Datos de tipo object: 
-       TABLA 2-8. RESOLUCIONES FIRMADAS A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y REFUGIO  \
-count                                                  77                                                
-unique                                                 77                                                
-top                                        País de origen                                                
-freq                                                    1                                                
+            TABLA 2-8.  \
+count              114   
+unique             114   
+top     País de origen   
+freq                 1   
 
-       Unnamed: 1 Unnamed: 2  Unnamed: 3  
-count          77         77          77  
-unique         21         15          28  
-top            –          –            1  
-freq           37         52          19  
+        RESOLUCIONES SOBRE SOLICITUDES DE PROTECCIÓN INTERNACIONAL: ADMITIDAS, NO ADMITIDAS Y DENEGADAS  \
+count                                                 115                                                 
+unique                                                 64                                                 
+top                                                     0                                                 
+freq                                                   14                                                 
+
+        Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  
+count          114         115         114         115         114  
+unique          47           7           4          28          16  
+top              1           0           0           0           0  
+freq            18         101         110          56          83  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-8. RESOLUCIONES FIRMADAS A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y REFUGIO    0
-Unnamed: 1                                                                                         0
-Unnamed: 2                                                                                         0
+TABLA 2-8.                                                                                         1
+RESOLUCIONES SOBRE SOLICITUDES DE PROTECCIÓN INTERNACIONAL: ADMITIDAS, NO ADMITIDAS Y DENEGADAS    0
+Unnamed: 2                                                                                         1
 Unnamed: 3                                                                                         0
+Unnamed: 4                                                                                         1
+Unnamed: 5                                                                                         0
+Unnamed: 6                                                                                         1
 dtype: int64
 -----------------------------------------------------------------------------------------
 
 TABLA 2-9
-   TABLA 2-9. RESOLUCIONES FIRMADAS A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y  \
-0                            REFUGIO. POR PAÍS Y SEXO                                        
-1                                      País de origen                                        
-2                                                 NaN                                        
-3                                          Afganistán                                        
-4                                             Albania                                        
-..                                                ...                                        
-74                                            Turquía                                        
-75                                            Ucrania                                        
-76                                          Venezuela                                        
-77                                              Yemen                                        
-78                                              Total                                        
+        TABLA 2-9.  \
+0   País de origen   
+1              NaN   
+2       Afganistán   
+3          Albania   
+4           Angola   
+..             ...   
+94      Uzbekistán   
+95       Venezuela   
+96         Vietnam   
+97           Yemen   
+98           Total   
 
-           Unnamed: 1 Unnamed: 2                          Unnamed: 3  \
-0                 NaN        NaN                                 NaN   
-1   Estatuto de Asilo        NaN  Estatuto de Protección Subsidiaria   
-2                   H          M                                   H   
-3                   9          5                                  23   
-4                  –          –                                   –    
-..                ...        ...                                 ...   
-74                 –          –                                    1   
-75                 11          5                                  12   
-76                  3          1                                  –    
-77                  1          2                                   1   
-78                206        163                                3760   
+   RESOLUCIONES FIRMADAS POR EL MINISTRO A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y REFUGIO POR PAÍS DE ORIGEN, CRITERIO DE RESOLUCIÓN Y SEXO  \
+0                               Estatuto de refugiado                                                                                                       
+1                                                   H                                                                                                       
+2                                                   6                                                                                                       
+3                                                   0                                                                                                       
+4                                                   0                                                                                                       
+..                                                ...                                                                                                       
+94                                                  1                                                                                                       
+95                                                  9                                                                                                       
+96                                                  0                                                                                                       
+97                                                  2                                                                                                       
+98                                                390                                                                                                       
 
-   Unnamed: 4     Unnamed: 5 Unnamed: 6  
-0         NaN            NaN        NaN  
-1         NaN  Desfavorables        NaN  
-2           M              H          M  
-3           4              4          2  
-4          –               1         –   
-..        ...            ...        ...  
-74         –               1         –   
-75         38            196        149  
-76         –              –          –   
-77         –              –          –   
-78       2740           2040        358  
+   Unnamed: 2                          Unnamed: 3 Unnamed: 4     Unnamed: 5  \
+0         NaN  Estatuto de protección subsidiaria        NaN  Desfavorables   
+1           M                                   H          M              H   
+2           9                                  30          7             16   
+3           0                                   0          0             15   
+4           0                                   0          0              2   
+..        ...                                 ...        ...            ...   
+94          0                                   0          0              0   
+95          7                                   0          0            790   
+96          0                                   0          0             13   
+97          6                                   4          0              1   
+98        236                                2253       1939           5789   
 
-[79 rows x 7 columns]
+   Unnamed: 6  
+0         NaN  
+1           M  
+2           3  
+3           6  
+4           3  
+..        ...  
+94          0  
+95        742  
+96          9  
+97          0  
+98       2886  
+
+[99 rows x 7 columns]
 Datos de tipo object: 
-       TABLA 2-9. RESOLUCIONES FIRMADAS A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y  \
-count                                                  78                                        
-unique                                                 78                                        
-top                              REFUGIO. POR PAÍS Y SEXO                                        
-freq                                                    1                                        
+            TABLA 2-9.  \
+count               98   
+unique              98   
+top     País de origen   
+freq                 1   
 
-       Unnamed: 1 Unnamed: 2 Unnamed: 3 Unnamed: 4  Unnamed: 5 Unnamed: 6  
-count          78         77         78         77          78         77  
-unique         16         15         15         11          24         19  
-top            –          –          –          –            1         –   
-freq           46         43         54         61          19         41  
+        RESOLUCIONES FIRMADAS POR EL MINISTRO A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y REFUGIO POR PAÍS DE ORIGEN, CRITERIO DE RESOLUCIÓN Y SEXO  \
+count                                                  99                                                                                                        
+unique                                                 18                                                                                                        
+top                                                     0                                                                                                        
+freq                                                   55                                                                                                        
+
+        Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  
+count           98          99          98          99          98  
+unique          18          14          14          47          30  
+top              0           0           0           1           0  
+freq            61          78          79          17          31  
 -----------------------------------------------------------------------------------------
 Valores nulos encontrados: 
-TABLA 2-9. RESOLUCIONES FIRMADAS A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y    1
-Unnamed: 1                                                                                 1
-Unnamed: 2                                                                                 2
-Unnamed: 3                                                                                 1
-Unnamed: 4                                                                                 2
-Unnamed: 5                                                                                 1
-Unnamed: 6                                                                                 2
+TABLA 2-9.                                                                                                                                                1
+RESOLUCIONES FIRMADAS POR EL MINISTRO A PROPUESTA DE LA COMISIÓN INTERMINISTERIAL DE ASILO Y REFUGIO POR PAÍS DE ORIGEN, CRITERIO DE RESOLUCIÓN Y SEXO    0
+Unnamed: 2                                                                                                                                                1
+Unnamed: 3                                                                                                                                                0
+Unnamed: 4                                                                                                                                                1
+Unnamed: 5                                                                                                                                                0
+Unnamed: 6                                                                                                                                                1
 dtype: int64
 -----------------------------------------------------------------------------------------
 
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\maria\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
 </pre>
 </div>
 </div>
@@ -12889,15 +13335,15 @@ TABLA 2-3
      Unnamed: 2         Unnamed: 3   Unnamed: 4 Unnamed: 5   Unnamed: 6  \
 0   Variación %  Puesto fronterizo  Variación %  C.I.E.(*)  Variación %   
 1           NaN                454          NaN          0          NaN   
-2        -12.39                300       -33.92        214          NaN   
-3         25.09                344        14.67        261        21.96   
-4        -31.74                401        16.57        160        -38.7   
-5         96.36                381        -4.99        306        91.25   
-6          10.1               1039        172.7        587        91.83   
-7         73.69               6862       560.44        785        33.73   
-8          79.7               3088          -55        769        -2.04   
-9         92.16               6148        99.09       1379        79.32   
-10        97.24               6518         6.02       1776        28.79   
+2           -12                300          -34        214          NaN   
+3            25                344           15        261           22   
+4           -32                401           17        160          -39   
+5            96                381           -5        306           91   
+6            10               1039          173        587           92   
+7            74               6862          560        785           34   
+8            80               3088          -55        769           -2   
+9            92               6148           99       1379           79   
+10           97               6518            6       1776           29   
 11          NaN              25535          NaN       6237          NaN   
 12          NaN                NaN          NaN        NaN          NaN   
 13          NaN                NaN          NaN        NaN          NaN   
@@ -12905,15 +13351,15 @@ TABLA 2-3
       Unnamed: 7   Unnamed: 8 Unnamed: 9  Unnamed: 10  
 0   Embajada(**)  Variación %      Total  Variación %  
 1             92          NaN       3007          NaN  
-2             74       -19.57       2744        -8.75  
-3            120        62.16       3422        24.71  
-4            186           55       2588       -24.37  
-5            211        13.44       4513        74.38  
-6            346        63.98       5952        31.89  
-7            327        -5.49      14887       150.12  
-8            264       -19.27      16544        11.13  
-9            341        29.17      31740        91.85  
-10           371          8.8      55749        75.64  
+2             74          -20       2744           -9  
+3            120           62       3422           25  
+4            186           55       2588          -24  
+5            211           13       4513           74  
+6            346           64       5952           32  
+7            327           -5      14887          150  
+8            264          -19      16544           11  
+9            341           29      31740           92  
+10           371            9      55749           76  
 11          2332          NaN     141146          NaN  
 12           NaN          NaN        NaN          NaN  
 13           NaN          NaN        NaN          NaN  
@@ -13058,15 +13504,15 @@ TABLA 2-5
    Unnamed: 2 Unnamed: 3   Unnamed: 4  
 0     Mujeres      Total  Variación %  
 1           8         51          NaN  
-2          43        171       235.29  
-3          14         89       -47.95  
-4         168        478       437.08  
-5         448       1142       138.91  
-6         529       1334        16.81  
-7         469       1149       -13.87  
-8         566       1403        22.11  
-9         779       2425        72.84  
-10        668       1900       -21.65  
+2          43        171          235  
+3          14         89          -48  
+4         168        478          437  
+5         448       1142          139  
+6         529       1334           17  
+7         469       1149          -14  
+8         566       1403           22  
+9         779       2425           73  
+10        668       1900          -22  
 11       3692      10142          NaN  
 Datos de tipo object: 
        TABLA 2-5.  \
