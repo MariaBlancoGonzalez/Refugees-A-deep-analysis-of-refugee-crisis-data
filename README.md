@@ -9,7 +9,9 @@ The data will be used to answer the following questions:
 * What are the top 10 countries with the highest asylum application rates since 2010? What are the top 10 with the lowest?
 * Depending on armed conflicts, for example, the Ukrainian-Russian conflict in 2022, has the number of applications from these two countries increased compared to previous years?
 * Interactive maps of asylum requests in Spain over the years in each autonomous community.
-* with spanish data, make comparisons with a gender perspective on asylum requests.
+* With spanish data, make comparisons with a gender perspective on asylum requests.
+
+The project has developed a complete process for data collection, transformation, and analysis. The data processing is located in the Jupyter notebooks. These notebooks provide a detailed record of the steps taken transform and analyze the data.
 
 ## Data sources
 
@@ -21,14 +23,18 @@ The data will be used to answer the following questions:
 
 Visualization analysis has been develop in Tableau public. What you can find there:
 
-![Refugee requests to Spain](assets/Map.png border="1px solid black")
+**Interactive map about incoming refugee requests**
+![assets/Map.png](https://github.com/MariaBlancoGonzalez/Refugees-A-deep-analysis-of-refugee-crisis-data/blob/main/assets/Map.png?raw=true)
 
-![Spanish incoming requests by autonomous community](assets/MapCCAA.png border="1px solid black")
+**Interactive map about autonomous community requests**
+![assets/MapCCAA.png](https://github.com/MariaBlancoGonzalez/Refugees-A-deep-analysis-of-refugee-crisis-data/blob/main/assets/MapCCAA.png?raw=true)
 
-Tableau public project [here](https://public.tableau.com/views/Refugees-analysis-of-refugee-crisis-data/IntRef?:language=es-ES&:display_count=n&:origin=viz_share_link).
+> [!IMPORTANT]  
+> Tableau public project [here](https://public.tableau.com/views/Refugees-analysis-of-refugee-crisis-data/IntRef?:language=es-ES&:display_count=n&:origin=viz_share_link).
 
 ## Project Structure
 
+```
 Refugees-A-deep-analysis-of-refugee-crisis-data
 .
 ├── assets
@@ -60,6 +66,7 @@ Refugees-A-deep-analysis-of-refugee-crisis-data
 └── reports
     ├── 1.0-jqp-initial-data-exploration.html
     └── README.md
+```
 
 > [!NOTE]  
 > This project has been develop following [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/#directory-structure) structure.
